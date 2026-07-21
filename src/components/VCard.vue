@@ -1,10 +1,4 @@
 <script setup>
-import {ref, watch} from "vue";
-
-const onEdit = ref(true)
-watch(onEdit , ()=>{
-  console.log(onEdit.value)
-})
 const props = defineProps({
   title: Object
 })
@@ -23,13 +17,12 @@ function editSender(index){
         <input type="checkbox">
       </div>
       <div class="order-of-cards">
-        <input class="EditorInput" type="text" v-model="item.title"
-               :id="onEdit ? 'disabled' : 'enabled'"
-               :disabled="onEdit">
+        <h3 v-if="!item.edit">{{item.title}}</h3>
+        <input v-else class="EditorInput" type="text" v-model="item.title">
       </div>
       <div class="icons order-of-cards">
         <i
-            @click="editSender(index); onEdit = !onEdit"
+            @click="editSender(index); item.edit = !item.edit ;console.log(item.edit)"
             class="fa-regular fa-pen-to-square"
         ></i>
       </div>
