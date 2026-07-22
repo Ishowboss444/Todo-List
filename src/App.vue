@@ -1,17 +1,17 @@
 <script setup>
-    import { computed, ref } from 'vue';
+    import { computed, ref, watch } from 'vue';
     import VSidebar from './components/VSidebar.vue';
     import VCard from './components/VCard.vue';
     import VEmptyImg from '@/components/VEmptyImg.vue';
 
     const isDark = ref(true);
     const todosArray = ref([]);
-    const id = ref(0);
+    let id = 0;
     const todosObject = ref({
         title: '',
-        completed: false    ,
+        completed: false,
         edit: false,
-        id: id.value
+        id: id
     });
     const isEmpty = computed(() => {
         if (todosArray.value.length > 0) {
@@ -20,15 +20,16 @@
             return true;
         }
     });
+    const textPosition = ref(false)
 
     function adder() {
         if (todosObject.value.title === '') {
             alert('complete the input');
         } else {
-            todosObject.value.id = id.value;
+            todosObject.value.id = id;
             todosArray.value.push({ ...todosObject.value });
             todosObject.value.title = '';
-            id.value += 1;
+            id += 1;
         }
     }
 
@@ -46,18 +47,22 @@
 </script>
 
 <template>
-    <aside
-        class="aside"
-        :id="!isDark ? 'dark-aside' : 'light-aside'"
-    >
-        <VSidebar/>
-    </aside>
+    <div class="underControl" :id="asideHover ? 'afterHover' : ''">
+        <aside
+            class="aside"
+            :id="!isDark ? 'dark-aside' : 'light-aside'"
+            @mouseenter="textPosition = true"
+            @mouseleave="textPosition = false"
 
-    <div
-        class="main-section"
-        :id="!isDark ? 'dark' : 'light'"
-    >
-        <div class="header">
+        >
+            <VSidebar/>
+        </aside>
+
+        <div
+            class="main-section"
+            :id="!isDark ? 'dark' : 'light'"
+        >
+            <div class="header">
         <span class="darkness"
               @click="theme"
         ><i :class="!isDark ?
@@ -65,37 +70,38 @@
             'fa-regular fa-moon'"
         ></i>
         </span>
-        </div>
-        <div class="central-holder">
-            <div class="logo">
-                <h1>My Tasks</h1>
             </div>
-            <div class="search-section">
-                <input type="text"
-                       class="search"
-                       placeholder="Type your task here..."
-                       v-model="todosObject.title"
+            <div class="central-holder">
+                <div class="logo">
+                    <h1>My Tasks</h1>
+                </div>
+                <div class="search-section">
+                    <input type="text"
+                           class="search"
+                           placeholder="Type your task here..."
+                           v-model="todosObject.title"
+                    >
+                    <button class="add-button" @click="adder()">+ Add</button>
+                </div>
+
+                <div v-if="isEmpty"
+                     class="empty-card"
+                     id="special-width-empty"
                 >
-                <button class="add-button" @click="adder()">+ Add</button>
-            </div>
+                    <VEmptyImg/>
+                </div>
 
-            <div v-if="isEmpty"
-                 class="empty-card"
-                 id="special-width-empty"
-            >
-                <VEmptyImg/>
+                <div v-else class="card">
+                    <VCard
+                        :title="todosArray"
+                        @delete="deleted"
+                        @edited="edited"
+                    />
+                </div>
+                <footer>
+                    <p>&copy;&nbsp;2026</p>
+                </footer>
             </div>
-
-            <div v-else class="card">
-                <VCard
-                    :title="todosArray"
-                    @delete="deleted"
-                    @edited="edited"
-                />
-            </div>
-            <footer>
-                <p>&copy;&nbsp;2026</p>
-            </footer>
         </div>
     </div>
 </template>

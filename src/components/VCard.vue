@@ -28,7 +28,7 @@
             </div>
             <div class="icons order-of-cards">
                 <i
-                    @click="editSender(index); item.edit = !item.edit ;console.log(item.edit)"
+                    @click="editSender(index); item.edit = !item.edit ;"
                     class="fa-regular fa-pen-to-square"
                 ></i>
             </div>
