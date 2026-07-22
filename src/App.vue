@@ -9,7 +9,7 @@
     const id = ref(0);
     const todosObject = ref({
         title: '',
-        completed: false,
+        completed: false    ,
         edit: false,
         id: id.value
     });

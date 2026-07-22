@@ -318,12 +318,24 @@ body {
     color: white;
     font-weight: 400;
   }
+  #completed{
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    color: #6A7282;
+  }
+
 }
 //---------------footer
 footer{
   position: absolute;
   right: 45%;
-  bottom: 5%;
+  bottom: 3%;
   color: gray;
   font-weight: 400;
+}
+//--------------completed tasks
+#completed{
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: #6A7282;
 }
