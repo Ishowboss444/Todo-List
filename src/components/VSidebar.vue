@@ -1,39 +1,57 @@
 <template>
     <div
+            class="HoverControler"
+            @mouseenter="extendInfo = true"
+            @mouseleave="extendInfo = false"
+        >
+    <div 
         class="padded-aside"
-        @mouseenter="asideHover = true"
-        @mouseleave="asideHover = false"
-        :id="!asideHover ? 'afterHover' : ''"
+
     >
         <div class="card-close">
-            <div class="profile-spot">
-                <i class="fa-solid fa-bars"></i>
-                <div class="profile" v-if="asideHover" >
+            <div class="transparent-bg">
+                <img v-if="props.darkness" src="./files/day/menu.svg" alt="Menu">
+                <img v-else src="./files/night/menu 1.svg" alt="Menu">
+            </div>
+            <div v-if="extendInfo" class="profile-spot">
+                <div class="profile" >
                     <div class="circle-profile">
-                        <img src="./files/cat.jpg" alt="cat">
+                        <div class="radius">
+                            <img src="./files/cat.jpg" alt="cat">
+                        </div>
                     </div>
-                </div>
-                <div v-if="asideHover" >
-                    <h3>Mohammadi</h3>
-                    <p>abolboss1388@gmail.com</p>
+                    <div class="text-profile">
+                        <h3>Mohammadi</h3>
+                        <h5>abolboss1388@gmail.com</h5>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-close">
-            <i class="fa-solid fa-bars"></i>
-            <p  v-if="asideHover">My Tasks</p>
+        <div class="card-close" :id="extendInfo ? 'activeDiv' : ''">
+            <div class="backgroundOfTodoItem">
+                <img src="./files/day/list-todo 1.svg" alt="menuTasks">
+            </div>
+            <p v-if="extendInfo">My Tasks</p>
         </div>
         <div class="card-close">
-            <i class="fa-solid fa-gear"></i>
-            <p  v-if="asideHover">Settings</p>
+            <div class="transparent-bg">
+                <img v-if="props.darkness" src="./files/day/menu settings.svg" alt="menuTasks">
+                <img v-else src="./files/night/menu settings.svg" alt="menuTasks">
+            </div>
+            <p v-if="extendInfo">Settings</p>
         </div>
     </div>
+    </div>
 </template>
-<script setup lang="js">
-    import { ref, watch } from 'vue';
+<script setup>
+import { ref } from 'vue';
 
-    const asideHover = ref(false);
-    watch(asideHover, () => {
-        console.log(asideHover.value);
-    });
+const extendInfo = ref(false) 
+const props = defineProps({
+    darkness : Boolean
+})
 </script>
+<style scoped>
+
+</style>
+

@@ -4,8 +4,9 @@
     import VCard from './components/VCard.vue';
     import VEmptyImg from '@/components/VEmptyImg.vue';
 
-    const isDark = ref(true);
+    const isDark = ref(false);
     const todosArray = ref([]);
+    const textPosition = ref(false)
     let id = 0;
     const todosObject = ref({
         title: '',
@@ -20,7 +21,7 @@
             return true;
         }
     });
-    const textPosition = ref(false)
+
 
     function adder() {
         if (todosObject.value.title === '') {
@@ -55,7 +56,7 @@
             @mouseleave="textPosition = false"
 
         >
-            <VSidebar/>
+            <VSidebar :darkness="isDark"/>
         </aside>
 
         <div
@@ -63,13 +64,10 @@
             :id="!isDark ? 'dark' : 'light'"
         >
             <div class="header">
-        <span class="darkness"
-              @click="theme"
-        ><i :class="!isDark ?
-            'fa-regular fa-sun isDark' :
-            'fa-regular fa-moon'"
-        ></i>
-        </span>
+                <span class="darkness"@click="theme">
+                    <img v-if="isDark" src="./components/files/day/moon 1.svg" alt="sun">
+                    <img v-else src="./components/files/night/sun 1.svg" alt="moon">
+                </span>
             </div>
             <div class="central-holder">
                 <div class="logo">
