@@ -3,9 +3,12 @@
     import VSidebar from './components/VSidebar.vue';
     import VCard from './components/VCard.vue';
     import VEmptyImg from '@/components/VEmptyImg.vue';
-
-    const isDark = ref(true);
-    const todosArray = ref([]);
+    import { initialize } from './utils/initialize.js';
+    import { localGet } from './utils/localStorageGet.js';
+    import { localSet } from './utils/localStorageSet.js';
+    const isDark = ref(initialize("theme" , false))
+    const todosArray = ref(initialize('todos' , []));
+    const textPosition = ref(false)
     let id = 0;
     const todosObject = ref({
         title: '',
@@ -20,7 +23,7 @@
             return true;
         }
     });
-    const textPosition = ref(false)
+
 
     function adder() {
         if (todosObject.value.title === '') {
@@ -29,16 +32,24 @@
             todosObject.value.id = id;
             todosArray.value.push({ ...todosObject.value });
             todosObject.value.title = '';
+            localSet("todos" , todosArray.value)
             id += 1;
         }
     }
 
     function theme() {
-        isDark.value = !isDark.value;
+        console.log(isDark.value);
+        if(isDark.value === false){
+            localStorage.setItem('theme' , true)
+        }else if(isDark.value === true){
+            localSet('theme' , false)   
+        }
+        isDark.value = localGet('theme')
     }
 
     function deleted(index) {
         todosArray.value.splice(index.index, 1);
+        localSet("todos" , todosArray.value)
     }
 
     function edited(index) {
@@ -47,7 +58,7 @@
 </script>
 
 <template>
-    <div class="underControl" :id="asideHover ? 'afterHover' : ''">
+    <div class="underControl">
         <aside
             class="aside"
             :id="!isDark ? 'dark-aside' : 'light-aside'"
@@ -55,7 +66,7 @@
             @mouseleave="textPosition = false"
 
         >
-            <VSidebar/>
+            <VSidebar :darkness="isDark"/>
         </aside>
 
         <div
@@ -63,13 +74,10 @@
             :id="!isDark ? 'dark' : 'light'"
         >
             <div class="header">
-        <span class="darkness"
-              @click="theme"
-        ><i :class="!isDark ?
-            'fa-regular fa-sun isDark' :
-            'fa-regular fa-moon'"
-        ></i>
-        </span>
+                <span class="darkness"@click="theme">
+                    <img v-if="isDark" src="./components/files/day/moon 1.svg" alt="sun">
+                    <img v-else src="./components/files/night/sun 1.svg" alt="moon">
+                </span>
             </div>
             <div class="central-holder">
                 <div class="logo">
