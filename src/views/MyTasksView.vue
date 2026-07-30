@@ -79,18 +79,19 @@
     }
 
     function deleted(index) {
-        todosArray.value.splice(index.index, 1);
+        todosArray.value.splice(index, 1);
         localSet('todos', todosArray.value);
     }
 
     function edited(index) {
-        todosArray.value[index].edit = !todosArray.value[index].edit;
+        let edit = todosArray.value[index]
+        edit.edit = !edit.edit;
         localSet('todos', todosArray.value);
     }
 
     function checkPointStore(index) {
-        todosArray.value[index].completed = !todosArray.value[index].completed;
+        let completed = todosArray.value[index]
+        completed.completed = !completed.completed;
         localSet('todos', todosArray.value);
-        console.log('changes' + index);
     }
 </script>
