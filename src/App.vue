@@ -1,5 +1,4 @@
 <script setup>
-    import { ref } from 'vue';
     import VSidebar from './components/VSidebar.vue';
     import { useTheme } from '@/stores/use.theme.js';
     const theme = useTheme()

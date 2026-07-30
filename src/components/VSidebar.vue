@@ -39,17 +39,18 @@
 
             <div class="card-close">
                 <div class="transparent-bg">
-                    <img v-if="props.darkness" src="./files/day/menu settings.svg" alt="menuTasks">
-                    <img v-else src="./files/night/menu settings.svg" alt="menuTasks">
+                    <img v-if="props.darkness" src="./files/day/menu%20settings.svg">
+                    <img v-else src="./files/night/menu%20settings.svg">
                 </div>
-                <router-link class="routes" v-if="extendInfo" to="/SettingView"><p v-if="extendInfo">Settings</p></router-link>
+                <router-link class="routes" v-if="extendInfo" to="/SettingView">
+                    <p v-if="extendInfo">Setting</p>
+                </router-link>
             </div>
         </div>
     </div>
 </template>
 <script setup>
     import { ref } from 'vue';
-
     const extendInfo = ref(false);
     const props = defineProps({
         darkness: Boolean
