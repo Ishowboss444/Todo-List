@@ -354,7 +354,8 @@ footer {
     align-items: center;
     gap: 20px;
     cursor: pointer;
-    .routes{
+
+    .routes {
       text-decoration: none;
       color: inherit;
     }
@@ -440,3 +441,8 @@ footer {
   }
 }
 
+@media (max-width: 1850px) {
+  .emptyText-darkMode {
+    display: none;
+  }
+}

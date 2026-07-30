@@ -370,4 +370,10 @@ footer {
   color: black;
 }
 
+@media (max-width: 1850px) {
+  .emptyText-darkMode {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
