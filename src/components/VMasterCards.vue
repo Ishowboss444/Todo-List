@@ -1,7 +1,11 @@
 <script setup>
+    import { localSet } from '@/utils/localStorageSet';
+    import { watch } from 'vue';
+
     const props = defineProps({
         title: Object
     });
+
     const emits = defineEmits(['delete', 'edited']);
 
     function deleteSender(index) {
@@ -9,14 +13,22 @@
     }
 
     function editSender(index) {
+        localSet('todos', props.title);
         emits('edited', { index: index });
     }
+
+    watch(props.title, () => {
+        localSet('todos', props.title);
+    });
 </script>
 <template>
     <div class="masterCard" v-for="(item , index) in props.title">
         <div class="cards">
             <div class="order-of-cards">
-                <input type="checkbox" class="checkbox" v-model="item.completed">
+                <input
+                    type="checkbox"
+                    class="checkbox"
+                    v-model="item.completed">
             </div>
             <div class="order-of-cards">
                 <h3
