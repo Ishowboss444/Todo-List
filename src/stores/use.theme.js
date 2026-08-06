@@ -5,6 +5,7 @@ import { localGet, localSet } from '@/utils/localStorageFundamentals.js';
 
 export const useTheme = defineStore('theme', () => {
     const myTheme = ref(initialize('myTheme', false));
+    const asideWide = ref(initialize("asideWide" , false))
 
     function themeChanger() {
         if (myTheme.value === false) {
@@ -16,6 +17,16 @@ export const useTheme = defineStore('theme', () => {
         }
         myTheme.value = localGet('myTheme');
     }
+    function asideWideness() {
+        if (asideWide.value === false) {
+            console.log(asideWide.value);
+            localSet('asideWide', true);
+        } else if (asideWide.value === true) {
+            console.log(asideWide.value);
+            localSet('asideWide', false);
+        }
+        asideWide.value = localGet('asideWide');
+    }
 
-    return { myTheme, themeChanger };
+    return { myTheme, themeChanger ,asideWideness , asideWide};
 });

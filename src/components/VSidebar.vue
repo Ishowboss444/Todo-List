@@ -1,12 +1,12 @@
 <template>
     <aside
         class="aside"
-        :id="!darkness.myTheme ? 'dark-aside' : 'light-aside'"
+        :id="!store.myTheme ? 'dark-aside' : 'light-aside'"
+        :style="{width: store.asideWide ? '400px' : '130px'}"
+        @click="store.asideWideness()"
     >
         <div
             class="HoverControler"
-            @mouseenter="extendInfo = true"
-            @mouseleave="extendInfo = false"
         >
             <div
                 class="padded-aside"
@@ -14,10 +14,10 @@
             >
                 <div class="card-close">
                     <div class="transparent-bg">
-                        <img v-if="darkness.myTheme" src="./files/day/menu.svg" alt="Menu">
+                        <img v-if="store.myTheme" src="./files/day/menu.svg" alt="Menu">
                         <img v-else src="./files/night/menu 1.svg" alt="Menu">
                     </div>
-                    <div v-if="extendInfo" class="profile-spot">
+                    <div v-if="store.asideWide" class="profile-spot">
                         <div class="profile">
                             <div class="circle-profile">
                                 <div class="radius">
@@ -32,25 +32,25 @@
                     </div>
                 </div>
 
-                <div class="card-close" :id="extendInfo ? 'active-div' : ''">
+                <div class="card-close" :id="store.asideWide ? 'active-div' : ''">
 
                     <div class="background-of-todo-item">
                         <img src="./files/day/list-todo%201.svg"
                              alt="menuTasks"
                         >
                     </div>
-                    <router-link v-if="extendInfo"
+                    <router-link v-if="store.asideWide"
                                  class="routes"
                                  to="/myTasks"
                     >
-                        <p v-if="extendInfo">My Tasks</p>
+                        <p>My Tasks</p>
                     </router-link>
 
                 </div>
 
                 <div class="card-close">
                     <div class="transparent-bg">
-                        <img v-if="darkness.myTheme"
+                        <img v-if="store.myTheme"
                              src="./files/day/menu%20settings.svg"
                              alt="setting"
                         >
@@ -59,13 +59,13 @@
                              alt="setting"
                         >
                     </div>
-                    <router-linkl
+                    <router-link
                         class="routes"
-                        v-if="extendInfo"
+                        v-if="store.asideWide"
                         to="/SettingView"
                     >
-                        <p v-if="extendInfo">Setting</p>
-                    </router-linkl>
+                        <p>Setting</p>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -77,9 +77,8 @@
     const extendInfo = ref(false);
     import { useTheme } from '@/stores/use.theme.js';
 
-    const darkness = useTheme();
-</script>
-<style scoped>
+    const store = useTheme();
 
-</style>
+</script>
+
 

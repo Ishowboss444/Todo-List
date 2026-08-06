@@ -38,9 +38,6 @@ body {
   height: 100%;
   transition: 0.3s;
 }
-.aside:hover {
-  width: 400px;
-}
 
 .main-section .central-holder {
   width: 55%;

@@ -2,7 +2,7 @@
     import VSidebar from './components/VSidebar.vue';
     import { useTheme } from '@/stores/use.theme.js';
 
-    const theme = useTheme();
+    const store = useTheme();
 </script>
 
 <template>
@@ -10,7 +10,8 @@
         <VSidebar/>
         <div
             class="main-section"
-            :id="!theme.myTheme? 'dark' : 'light'"
+            :id="!store.myTheme? 'dark' : 'light'"
+            @click="store.asideWideness()"
         >
             <router-view></router-view>
         </div>
