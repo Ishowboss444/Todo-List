@@ -50,10 +50,10 @@ body {
 
     .logo {
       width: 100%;
-      height: 100px;
+      height: 140px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
     }
   }
 }
@@ -80,6 +80,7 @@ body {
   height: 100px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
 
   input {
@@ -464,5 +465,27 @@ footer {
   }
   .central-holder {
     width: 100%;
+  }
+}
+
+//------------fillterBar
+.filter-bar {
+  width: 60%;
+  margin: 0 auto;
+
+  ul {
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+
+    li {
+      padding: 0 10px;
+      border-right: 1px solid;
+      color: gray;
+    }
+
+    li:last-child {
+      border: none;
+    }
   }
 }

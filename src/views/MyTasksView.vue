@@ -17,7 +17,9 @@
             >
             <input type="submit" value="+ Add" class="add-button" @click="adder()"/>
         </form>
-
+        <div v-if="isEmpty" class="filter-bar">
+            <VFilterbar v-if="isEmpty"/>
+        </div>
         <div v-if="isEmpty"
              class="empty-card"
              id="special-width-empty"
@@ -47,6 +49,7 @@
     import { initialize } from '@/tools/initialize.js';
     import { localSet } from '@/utils/localStorageFundamentals.js';
     import { useTheme } from '@/stores/use.theme.js';
+    import VFilterbar from '@/components/VFilterbar.vue';
 
     const mainTheme = useTheme();
     const todosArray = ref(initialize('todos', []));
