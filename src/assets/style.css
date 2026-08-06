@@ -103,6 +103,7 @@ body {
 .master-card {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 .master-card .cards {
   width: 60%;
@@ -373,6 +374,26 @@ footer {
 @media (max-width: 1850px) {
   .emptyText-darkMode {
     display: none;
+  }
+}
+@media (max-width: 1400px) {
+  .search-section {
+    width: 100%;
+  }
+  .central-holder {
+    width: 85%;
+  }
+}
+@media (max-width: 600px) {
+  .aside {
+    display: none;
+  }
+  .main-section {
+    width: 400px;
+    height: 100%;
+  }
+  .central-holder {
+    width: 100%;
   }
 }
 

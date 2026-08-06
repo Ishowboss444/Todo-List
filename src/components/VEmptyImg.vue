@@ -16,7 +16,7 @@
         </div>
         <div class="text-position">
             <h2 class="emptyText-darkMode">
-                Empty as my motivation on <span>{{days[currentDay]}}</span> 😅.
+                Empty as my motivation on <span>{{ days[currentDay] }}</span> 😅.
                 <br>
                 Let's start adding stuff!
             </h2>
@@ -24,7 +24,7 @@
     </div>
 </template>
 <script setup lang="js">
-    const date = new Date()
-    const currentDay = date.getDay()
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const date = new Date();
+    const currentDay = date.getDay();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 </script>

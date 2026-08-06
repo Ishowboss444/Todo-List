@@ -98,7 +98,7 @@ body {
   }
 
   .add-button {
-    padding:0;
+    padding: 0;
     width: 100px;
     height: 40px;
     border-radius: 10px;
@@ -113,9 +113,11 @@ body {
 }
 
 //-------------card Component
-.master-card{
+.master-card {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+
   .cards {
     width: 60%;
     height: 60px;
@@ -443,5 +445,28 @@ footer {
 @media (max-width: 1850px) {
   .emptyText-darkMode {
     display: none;
+  }
+}
+
+@media (max-width: 1400px) {
+  .search-section {
+    width: 100%;
+  }
+  .central-holder {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .aside {
+    display: none;
+  }
+  .main-section {
+    width: 400px;
+    height: 100%;
+
+  }
+  .central-holder {
+    width: 100%;
   }
 }
