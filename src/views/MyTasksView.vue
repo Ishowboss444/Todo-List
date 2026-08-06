@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-                <span class="darkness" @click="myTheme.themeChanger()">
-                    <img v-if="myTheme.myTheme" src="../components/files/day/moon 1.svg" alt="sun">
+                <span class="darkness" @click="mainTheme.themeChanger()">
+                    <img v-if="mainTheme.myTheme" src="../components/files/day/moon 1.svg" alt="sun">
                     <img v-else src="../components/files/night/sun 1.svg" alt="moon">
                 </span>
     </div>
@@ -9,14 +9,14 @@
         <div class="logo">
             <h1>My Tasks</h1>
         </div>
-        <div class="search-section">
+            <form class="search-section">
             <input type="text"
                    class="search"
                    placeholder="Type your task here..."
                    v-model="todosObject.title"
             >
-            <button class="add-button" @click="adder()">+ Add</button>
-        </div>
+            <input type="submit" value="+ Add" class="add-button" @click="adder()"/>
+            </form>
 
         <div v-if="isEmpty"
              class="empty-card"
@@ -26,12 +26,12 @@
         </div>
 
         <div v-else class="card">
-            <div class="masterCard" v-for="(item , index) in todosArray">
-                <VMasterCard
-                    :title="todosArray[index]"
-                    @delete="deleted(index)"
-                    @edited="edited(index)"
-                    @checkPoint="checkPointStore(index)"
+            <div class="master-card" v-for="(item , index) in todosArray" >
+                <VCard
+                    :todo="item"
+                    @deleteSensor="deleted(index)"
+                    @editeSensor="edited(index)"
+                    @checkPointSensor="checkPointStore(index)"
                 />
             </div>
         </div>
@@ -41,22 +41,21 @@
     </div>
 </template>
 <script setup lang="js">
-    import VMasterCard from '@/components/VMasterCard.vue';
+    import VCard from '@/components/VCard.vue';
     import VEmptyImg from '@/components/VEmptyImg.vue';
     import { computed, ref } from 'vue';
     import { initialize } from '@/utils/initialize.js';
-    import { localSet } from '@/utils/localStorageSet.js';
+    import { localSet } from '@/utils/localStorageFundamentals.js';
     import { useTheme } from '@/stores/use.theme.js';
 
-    const myTheme = useTheme();
+    const mainTheme = useTheme();
 
     const todosArray = ref(initialize('todos', []));
-    let id = 0;
     const todosObject = ref({
         title: '',
         completed: false,
         edit: false,
-        id: id
+        id: null,
     });
     const isEmpty = computed(() => {
         if (todosArray.value.length > 0) {
@@ -70,21 +69,21 @@
         if (todosObject.value.title === '') {
             alert('complete the input');
         } else {
-            todosObject.value.id = id;
+            todosObject.value.id = todosArray.value.length
             todosArray.value.push({ ...todosObject.value });
             todosObject.value.title = '';
             localSet('todos', todosArray.value);
-            id += 1;
         }
     }
 
-    function deleted(index) {
-        todosArray.value.splice(index, 1);
+    function deleted(id) {
+        console.log(id);
+        todosArray.value.splice(id, 1);
         localSet('todos', todosArray.value);
     }
-
     function edited(index) {
         let edit = todosArray.value[index]
+        console.log(edit);
         edit.edit = !edit.edit;
         localSet('todos', todosArray.value);
     }

@@ -26,6 +26,5 @@
 <script setup lang="js">
     const date = new Date()
     const currentDay = date.getDay()
-    console.log(currentDay);
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 </script>

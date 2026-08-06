@@ -5,16 +5,8 @@
 </script>
 
 <template>
-    <div class="underControl">
-
-        <aside
-            class="aside"
-            :id="!theme.myTheme ? 'dark-aside' : 'light-aside'"
-
-        >
-            <VSidebar :darkness="theme.myTheme"/>
-        </aside>
-
+    <div class="under-control">
+            <VSidebar/>
         <div
             class="main-section"
             :id="!theme.myTheme? 'dark' : 'light'"

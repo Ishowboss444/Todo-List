@@ -10,7 +10,7 @@
   width: 100%;
   height: 100vh;
 }
-#app .underControl {
+#app .under-control {
   width: 100%;
   height: 100%;
   display: grid;
@@ -86,7 +86,8 @@ body {
   box-shadow: 0.8px 0.8px 3px gray;
   font-size: 1rem;
 }
-.search-section button {
+.search-section .add-button {
+  padding: 0;
   width: 100px;
   height: 40px;
   border-radius: 10px;
@@ -99,12 +100,11 @@ body {
   box-shadow: 1px 1px 1px black;
 }
 
-.masterCard {
+.master-card {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
-.masterCard .cards {
+.master-card .cards {
   width: 60%;
   height: 60px;
   display: grid;
@@ -114,7 +114,7 @@ body {
   box-shadow: 0.1px 0.6px 3.3px gray;
   overflow: hidden;
 }
-.masterCard .cards .checkbox {
+.master-card .cards .checkbox {
   appearance: none;
   position: relative;
   width: 1.1rem;
@@ -124,10 +124,10 @@ body {
   background: transparent;
   border-radius: 4px;
 }
-.masterCard .cards .checkbox:checked {
+.master-card .cards .checkbox:checked {
   background: black;
 }
-.masterCard .cards .checkbox[type=checkbox]::before {
+.master-card .cards .checkbox[type=checkbox]::before {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -136,28 +136,28 @@ body {
   content: " ";
   color: white;
 }
-.masterCard .cards input[type=checkbox]:checked::before {
+.master-card .cards input[type=checkbox]:checked::before {
   content: "✓";
 }
-.masterCard .cards .lined {
+.master-card .cards .lined {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
   color: rgba(0, 0, 0, 0.678);
 }
-.masterCard .cards .icons {
+.master-card .cards .icons {
   background-color: transparent;
   border: none;
   outline: none;
   font-size: 20px;
 }
-.masterCard .cards .order-of-cards {
+.master-card .cards .order-of-cards {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.masterCard .cards .order-of-cards .todo-title {
+.master-card .cards .order-of-cards .todo-title {
   width: 100%;
   height: 50%;
   display: flex;
@@ -165,7 +165,7 @@ body {
   padding-left: 10px;
   font-size: 20px;
 }
-.masterCard .cards .order-of-cards .EditorInput {
+.master-card .cards .order-of-cards .editor-input {
   width: 100%;
   height: 50%;
   font-size: 1rem;
@@ -175,7 +175,7 @@ body {
   border: 1px solid gray;
   padding: 10px;
 }
-.masterCard .cards .order-of-cards #disabled {
+.master-card .cards .order-of-cards #disabled {
   border: none;
   outline: none;
   color: black;
@@ -261,7 +261,7 @@ body {
 #dark .todo-title {
   color: white;
 }
-#dark .EditorInput {
+#dark .editor-input {
   color: white;
 }
 #dark i {
@@ -345,7 +345,7 @@ footer {
 .padded-aside .card-close:first-child .profile-spot .profile .text-profile h5 {
   line-height: 0;
 }
-.padded-aside .backgroundOfTodoItem {
+.padded-aside .background-of-todo-item {
   width: 104px;
   height: 58px;
   background-color: #F3F4F6;
@@ -363,10 +363,10 @@ footer {
   justify-content: center;
   align-items: center;
 }
-.padded-aside #activeDiv {
+.padded-aside #active-div {
   background-color: #F3F4F6;
 }
-.padded-aside #activeDiv p {
+.padded-aside #active-div p {
   color: black;
 }
 

@@ -1,19 +1,20 @@
 <script setup>
+    import { defineEmits } from 'vue';
     const props = defineProps({
-        title: Object
+        todo: Object
     });
 
-    const emits = defineEmits(['delete', 'edited','checkPoint']);
+    const emits = defineEmits(['deleteSensor', 'editeSensor','checkPointSensor']);
 
     function deleteSender() {
-        emits('delete');
+        emits('deleteSensor');
     }
 
     function editSender() {
-        emits('edited');
+        emits('editeSensor');
     }
     function checkPoint(){
-        emits('checkPoint')
+        emits('checkPointSensor')
     }
 
 </script>
@@ -24,15 +25,15 @@
                     @click="checkPoint()"
                     type="checkbox"
                     class="checkbox"
-                    v-model="props.title.completed">
+                    v-model="props.todo.completed">
             </div>
             <div class="order-of-cards">
                 <h3
                     class="todo-title"
-                    v-if="!props.title.edit"
-                    :id="props.title.completed ? 'completed' : ''"
-                >{{ props.title.title }}</h3>
-                <input v-else class="EditorInput" type="text" v-model="props.title.title">
+                    v-if="!props.todo.edit"
+                    :id="props.todo.completed ? 'completed' : ''"
+                >{{ props.todo.title }}</h3>
+                <input v-else class="editor-input" type="text" v-model="props.todo.title">
             </div>
             <div class="icons order-of-cards">
                 <i
