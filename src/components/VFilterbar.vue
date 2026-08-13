@@ -1,11 +1,23 @@
 <template>
-    <div>
+  <div>
     <ul>
-        <li>All</li>
-        <li>Active</li>
-        <li>Completed</li>
+      <li v-for="(item,index) in arrayStore.filterBar"
+          :key="item.title"
+          :id="item.status? 'active' : '' "
+          @click="changeActiveClassBind(index)"
+      >
+        {{ item.title }}
+      </li>
     </ul>
-    </div>
+  </div>
 </template>
-<script setup lang="ts">
+<script setup lang="js">
+import {arrayManipulation} from "@/stores/use.arrayManipulation.js";
+
+const arrayStore = arrayManipulation()
+
+function changeActiveClassBind(index) {
+  arrayStore.activeLog(index)
+}
+
 </script>
