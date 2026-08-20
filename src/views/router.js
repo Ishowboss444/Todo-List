@@ -7,12 +7,12 @@ export const router = createRouter({
         {
             path: '/myTasks',
             name:'MyTasksView',
-            component: ()=> import('/MyTasksView.vue'),
+            component: ()=> import('./MyTasksView.vue'),
         },
         {
             path: '/SettingView',
             name: 'SettingView',
-            component: ()=> import('/SettingView.vue'),
+            component: ()=> import('./SettingView.vue'),
         },
     ],
 })
