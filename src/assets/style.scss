@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root[data-theme="light"]{
+  --bg-color:#f3f4f6;
 
+  --bg-aside:white;
+
+  --bg-card:white;
+  --bg-search:white;
+  --bg-add-button:black;
+  --search-placeholder:gray;
+  --search-box-shadow:.8px .8px 3px gray;
+  --active:black;
+  
+  --profile-border:black;
+  --profile-text:black;
+
+  --text:black;
+}
+:root[data-theme="dark"]{
+  --bg-color:#101828;
+
+  --bg-aside:#1E2939;
+
+  --bg-card:#1E2939;
+  --bg-search:#1E2939;
+  --bg-add-button:#1E2939;
+  --text-search:white;
+  --search-placeholder:white;
+  --search-box-shadow:var(--search-box-shadow);
+  --active:white;
+  --add-button:#1E2939;
+  
+  --profile-border:#9e9e9e;
+  --profile-text:rgb(183, 179, 179);
+
+  --text:white;
+}
 * {
   padding: 0;
   margin: 0;
@@ -24,6 +59,7 @@ body {
   font-weight: 800;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+  background-color: var(--bg-color);
 }
 
 //--------------aside
@@ -39,6 +75,8 @@ body {
   width: 130px;
   height: 100%;
   transition: 0.3s;
+  background-color: var(--bg-aside);
+
 }
 
 
@@ -54,6 +92,9 @@ body {
       display: flex;
       justify-content: center;
       align-items: flex-end;
+      h1{
+        color: var(--text);
+      }
     }
   }
 }
@@ -70,6 +111,11 @@ body {
     width: 50px;
     height: 50px;
     font-size: 50px;
+    svg{
+      width: 100%;
+      height: 100%;
+      color: var(--text);
+    }
   }
 }
 
@@ -92,6 +138,12 @@ body {
     padding-left: 15px;
     box-shadow: 0.8px 0.8px 3px gray;
     font-size: 1rem;
+    box-shadow: var(--search-box-shadow);
+    background-color: var(--bg-search);
+    color: var(--text);
+    &::placeholder{
+      color: var(--search-placeholder);
+    }
   }
 
   .add-button {
@@ -100,7 +152,7 @@ body {
     height: 40px;
     border-radius: 10px;
     border: none;
-    background-color: black;
+    background-color: var(--bg-add-button);
     color: white;
     font-size: 14px;
     font-weight: 500;
@@ -121,9 +173,9 @@ body {
     display: grid;
     grid-template-columns: 1fr 7fr 1fr 1fr;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0.1px 0.6px 3.3px gray;
+    background-color: var(--bg-card);
     overflow: hidden;
+    box-shadow: var(--search-box-shadow);
 
     .checkbox {
       appearance: none;
@@ -134,6 +186,7 @@ body {
       line-height: 1;
       background: transparent;
       border-radius: 4px;
+      color: var(--text);
     }
 
     .checkbox:checked {
@@ -165,6 +218,7 @@ body {
       border: none;
       outline: none;
       font-size: 20px;
+      color: var(--text);
     }
 
     .order-of-cards {
@@ -181,6 +235,8 @@ body {
         align-items: center;
         padding-left: 10px;
         font-size: 20px;
+        color: var(--text);
+
       }
 
       .editor-input {
@@ -189,9 +245,12 @@ body {
         font-size: 1rem;
         background-color: transparent;
         outline: none;
-        border-radius: 10px;
-        border: 1px solid gray;
+        border-radius: 3px;
+        border: none;
+        border-bottom: 3px solid gray;
         padding: 10px;
+        color: var(--text);
+
       }
 
       #disabled {
@@ -229,101 +288,6 @@ body {
 
 }
 
-#special-width-empty {
-  width: 100%;
-}
-
-//-----------------Them
-#dark-aside {
-  .card-close {
-    color: #d8d8d8;
-
-  }
-
-  .card-close:first-child {
-    background: transparent;
-  }
-
-  .card-close:last-child {
-    background: transparent;
-  }
-}
-
-#light {
-  background-color: #F3F4F6;
-}
-
-#dark-aside {
-  background: #1E2939;
-
-  .card-close:first-child {
-    border-bottom: 1px solid rgb(158, 158, 158);
-  }
-
-}
-
-#dark {
-  background-color: #101828;
-
-  .search {
-    background-color: #1E2939;
-    color: white;
-    box-shadow: 0.4px 0.4px 1px black;
-
-    &::placeholder {
-      color: white;
-    }
-  }
-
-  .logo {
-    color: white;
-  }
-
-  .add-button {
-    background-color: #1E2939;
-    box-shadow: 0.4px 0.4px 1px black;
-  }
-
-  .isDark {
-    color: white;
-  }
-
-  .emptyText-darkMode {
-    color: white;
-  }
-
-  .checkbox {
-    border: 1px solid white;
-  }
-
-  .cards {
-    background: #1E2939;
-    box-shadow: 0.4px 0.4px 1px black;
-  }
-
-  .todo-title {
-    color: white;
-  }
-
-  .editor-input {
-    color: white;
-  }
-
-  i {
-    color: white;
-    font-weight: 400;
-  }
-
-  #completed {
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
-    color: #6A7282;
-  }
-  #active{
-  color:white;
-}
-}
-
 //---------------footer
 footer {
   position: absolute;
@@ -355,8 +319,19 @@ footer {
     align-items: center;
     gap: 20px;
     cursor: pointer;
-
+    color: var(--text);
+    .transparent-bg{
+      svg{
+        width: 85%;
+        height: 85%;
+      }
+    }
     .routes {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
       text-decoration: none;
       color: inherit;
     }
@@ -368,7 +343,7 @@ footer {
     cursor: default;
     display: block;
     min-height: 100px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--profile-border);
 
     .profile-spot {
       display: block;
@@ -403,10 +378,12 @@ footer {
 
           h3 {
             line-height: 60px;
+            color:var(--profile-text) ;
           }
 
           h5 {
             line-height: 0;
+            color:var(--profile-text) ;
           }
         }
       }
@@ -421,6 +398,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+      svg{
+        width: 85%;
+        height: 85%;
+        color: black;
+      }
   }
 
   .transparent-bg {
@@ -494,5 +476,5 @@ footer {
 }
 //---------------------filter component 
 #active{
-  color:black;
+  color:var(--active);
 }

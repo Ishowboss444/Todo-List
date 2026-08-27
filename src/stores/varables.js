@@ -1,19 +1,20 @@
 import {defineStore} from 'pinia';
-import {initialize} from '@/tools/initialize.js';
 import {ref} from 'vue';
-import {localGet, localSet} from '@/utils/localStorageFundamentals.js';
+import {localGet, localSet ,initialize} from '@/utils/localStorage.js';
 
 export const useGlobalVariable = defineStore('globalVariables', () => {
-    const myTheme = ref(initialize('myTheme', false));
+    const theme = ref(initialize('theme', 'dark'));
     const asideWide = ref(initialize("asideWide", false))
 
     function themeChanger() {
-        if (myTheme.value === false) {
-            localSet('myTheme', true);
-        } else if (myTheme.value === true) {
-            localSet('myTheme', false);
+        if (theme.value === 'dark') {
+            document.documentElement.dataset.theme= 'light'
+            localSet('theme', 'light');
+        } else if (theme.value === 'light') {
+            localSet('theme', 'dark');
+            document.documentElement.dataset.theme= 'dark'
         }
-        myTheme.value = localGet('myTheme');
+        theme.value = localGet('theme');
     }
 
     function widen() {
@@ -31,5 +32,5 @@ export const useGlobalVariable = defineStore('globalVariables', () => {
     }
 
 
-    return {myTheme, themeChanger, asideWide, widen, unWiden};
+    return {theme, themeChanger, asideWide, widen, unWiden};
 });

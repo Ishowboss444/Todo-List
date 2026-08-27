@@ -1,4 +1,5 @@
-import './assets/style.css';
+import './assets/style.scss';
+import '../node_modules/vue-sonner/lib/index.css'
 import { createApp } from 'vue';
 import App from './App.vue';
 import { router } from '@/views/router.js';

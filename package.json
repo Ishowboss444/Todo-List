@@ -12,11 +12,13 @@
     "lucide-vue-next": "^1.0.0",
     "pinia": "^4.0.2",
     "vue": "^3.5.38",
-    "vue-router": "^5.2.0"
+    "vue-router": "^5.2.0",
+    "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
+    "sass-embedded": "^1.103.1",
     "vite": "^8.0.16",
     "vite-plugin-vue-devtools": "^8.1.2"
   },

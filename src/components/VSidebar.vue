@@ -1,7 +1,6 @@
 <template>
   <aside
       class="aside"
-      :id="!store.myTheme ? 'dark-aside' : 'light-aside'"
       :style="{width: store.asideWide ? '400px' : '130px'}"
       @click="store.widen()"
   >
@@ -14,8 +13,7 @@
       >
         <div class="card-close">
           <div class="transparent-bg">
-            <img v-if="store.myTheme" src="./files/day/menu.svg" alt="Menu">
-            <img v-else src="./files/night/menu 1.svg" alt="Menu">
+            <Menu />
           </div>
           <div v-if="store.asideWide" class="profile-spot">
             <div class="profile">
@@ -32,53 +30,44 @@
           </div>
         </div>
 
-        <div class="card-close" :id="store.asideWide ? 'active-div' : ''">
-
-          <div class="background-of-todo-item">
-            <img src="./files/day/list-todo%201.svg"
-                 alt="menuTasks"
-            >
+        <div class="card-close" :id="store.asideWide ? listTodos.id : ''" @click="pushRoute('MyTasksView')">
+            <div :class="listTodos.class">
+              <ListTodo/>
+            </div>
+            <p v-if="store.asideWide">My Tasks</p>
           </div>
-          <router-link v-if="store.asideWide"
-                       class="routes"
-                       to="/myTasks"
-          >
-            <p>My Tasks</p>
-          </router-link>
 
-        </div>
-
-        <div class="card-close">
-          <div class="transparent-bg">
-            <img v-if="store.myTheme"
-                 src="./files/day/menu%20settings.svg"
-                 alt="setting"
-            >
-            <img v-else
-                 src="./files/night/menu%20settings.svg"
-                 alt="setting"
-            >
+        <div class="card-close" :id="store.asideWide ? setting.id : ''" @click="pushRoute('SettingView')">
+            <div :class="setting.class">
+              <SettingsIcon/>
+            </div>
+            <p v-if="store.asideWide">Setting</p>
           </div>
-          <router-link
-              class="routes"
-              v-if="store.asideWide"
-              to="/SettingView"
-          >
-            <p>Setting</p>
-          </router-link>
-        </div>
       </div>
     </div>
   </aside>
 </template>
 <script setup>
-import {ref} from 'vue';
+import {useGlobalVariable} from '@/stores/varables.js';
+import {Menu , SettingsIcon , ListTodo} from 'lucide-vue-next'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const extendInfo = ref(false);
-import {useGlobalVariable} from '@/stores/use.global.variable.js';
-
+const router = useRouter()
 const store = useGlobalVariable();
-
+function pushRoute(Route){
+  router.push({name: Route})
+}
+const listTodos = ref({
+  class:'background-of-todo-item',
+  id:'active-div',
+  active:true,
+})
+const setting = ref({
+  class:'transparent-bg',
+  id:'',
+  active:false,
+})
 </script>
 
 

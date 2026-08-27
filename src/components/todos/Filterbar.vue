@@ -12,9 +12,9 @@
   </div>
 </template>
 <script setup lang="js">
-import {arrayManipulation} from "@/stores/use.arrayManipulation.js";
+import {todos} from "@/stores/todos.js";
 
-const arrayStore = arrayManipulation()
+const arrayStore = todos()
 
 function changeActiveClassBind(index) {
   arrayStore.activeLog(index)

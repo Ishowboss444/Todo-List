@@ -5,6 +5,12 @@ export const router = createRouter({
     history:createWebHistory(),
     routes: [
         {
+            path: '/',
+            name:'Home',
+            redirect: {name:'MyTasksView'}
+            // component: ()=> import('./MyTasksView.vue'),
+        },
+        {
             path: '/myTasks',
             name:'MyTasksView',
             component: ()=> import('./MyTasksView.vue'),
