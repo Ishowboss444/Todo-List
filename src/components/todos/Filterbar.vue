@@ -13,11 +13,14 @@
 </template>
 <script setup lang="js">
 import {todos} from "@/stores/todos.js";
+import { initialize, localSet } from "@/utils/localStorage";
 
 const arrayStore = todos()
-
+const filterIndex = initialize('filterIndex' , 0)
+arrayStore.activeLog(filterIndex)
 function changeActiveClassBind(index) {
   arrayStore.activeLog(index)
+  localSet('filterIndex' , index)
 }
 
 </script>

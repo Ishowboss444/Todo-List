@@ -2,7 +2,7 @@
   <aside
       class="aside"
       :style="{width: store.asideWide ? '400px' : '130px'}"
-      @click="store.widen()"
+      @click.stop="store.widen()"
   >
     <div
         class="HoverControler"
@@ -11,9 +11,9 @@
           class="padded-aside"
 
       >
-        <div class="card-close">
+        <div class="card-close" >
           <div class="transparent-bg">
-            <Menu />
+            <Menu @click.stop="store.unWiden()"/>
           </div>
           <div v-if="store.asideWide" class="profile-spot">
             <div class="profile">
@@ -30,14 +30,22 @@
           </div>
         </div>
 
-        <div class="card-close" :id="store.asideWide ? listTodos.id : ''" @click="pushRoute('MyTasksView')">
+        <div 
+          class="card-close" 
+          :class="{'activeNav': active('MyTasksView')}" 
+          @click="pushRoute('MyTasksView')"
+          >
             <div :class="listTodos.class">
               <ListTodo/>
             </div>
             <p v-if="store.asideWide">My Tasks</p>
           </div>
 
-        <div class="card-close" :id="store.asideWide ? setting.id : ''" @click="pushRoute('SettingView')">
+        <div 
+          class="card-close" 
+          :class="{'activeNav': active('SettingView')}" 
+          @click="pushRoute('SettingView')"
+        >
             <div :class="setting.class">
               <SettingsIcon/>
             </div>
@@ -52,7 +60,9 @@ import {useGlobalVariable} from '@/stores/varables.js';
 import {Menu , SettingsIcon , ListTodo} from 'lucide-vue-next'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 
+const route = useRoute()
 const router = useRouter()
 const store = useGlobalVariable();
 function pushRoute(Route){
@@ -68,6 +78,8 @@ const setting = ref({
   id:'',
   active:false,
 })
+function active(routeName){
+  return route.name === routeName
+}
+
 </script>
-
-

@@ -26,7 +26,7 @@
         "
       />
     </form>
-    <div v-if="store.filtered" class="filter-bar">
+    <div v-if="tStore.filtered" class="filter-bar">
       <VFilterBar />
     </div>
     <div v-if="!tStore.filtered" class="empty-card" id="special-width-empty">
@@ -55,4 +55,5 @@ import { Sun, Moon } from "lucide-vue-next";
 const store = useGlobalVariable();
 const tStore = todos();
 const title = ref("");
+tStore.resetEdit()
 </script>

@@ -389,40 +389,56 @@ footer {
       }
     }
   }
+  .testActive{
+    background-color: red;
+  }
+  .activeNav{
+    background-color: #F3F4F6;
+    color: black;
+  }
 
   .background-of-todo-item {
-    width: 104px;
-    height: 58px;
-    background-color: #F3F4F6;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      svg{
-        width: 85%;
-        height: 85%;
-        color: black;
-      }
+  width: 104px;
+  height: 58px;
+  // background-color: #F3F4F6;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 85%;
+    height: 85%;
+  }
+}
+
+.transparent-bg {
+  width: 104px;
+  height: 58px;
+  background-color: transparent;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 85%;
+    height: 85%;
   }
 
-  .transparent-bg {
-    width: 104px;
-    height: 58px;
-    background-color: transparent;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
   #active-div {
-    background-color: #F3F4F6;
+    // background-color: #F3F4F6;
 
     p {
       color: black;
     }
   }
 }
+
 
 @media (max-width: 1850px) {
   .emptyText-darkMode {

@@ -8,11 +8,11 @@ import { toast } from "vue-sonner";
 
 export const todos = defineStore('arrayOnLoaded', () => {
     const filterBar = ref([{
-        title: 'All', status: initialize('allState', false)
+        title: 'All', status: true
     }, {
-        title: 'Active', status: initialize('activeState', true)
+        title: 'Active', status: false
     }, {
-        title: 'Completed', status: initialize('completedState', false)
+        title: 'Completed', status: false
     },])
 
     function activeLog(val) {
@@ -20,24 +20,14 @@ export const todos = defineStore('arrayOnLoaded', () => {
             filterBar.value[0].status = true
             filterBar.value[1].status = false
             filterBar.value[2].status = false
-            localSet('allState', true)
-            localSet('activeState', false)
-            localSet('completedState', false)
-
         } else if (val === 1) {
             filterBar.value[0].status = false
             filterBar.value[1].status = true
             filterBar.value[2].status = false
-            localSet('activeState', true)
-            localSet('allState', false)
-            localSet('completedState', false)
         } else if (val === 2) {
             filterBar.value[0].status = false
             filterBar.value[1].status = false
             filterBar.value[2].status = true
-            localSet('completedState', true)
-            localSet('allState', false)
-            localSet('activeState', false)
         }
     }
 
@@ -61,7 +51,7 @@ export const todos = defineStore('arrayOnLoaded', () => {
             toast.error('Make sure ,You have filled out Precisely')
             return
         }
-        tasks.value.push({
+        tasks.value.unshift({
             title:title,
             edit:false,
             completed:false,
@@ -83,6 +73,11 @@ export const todos = defineStore('arrayOnLoaded', () => {
         const editFounder = tasks.value[indexFounder]
         editFounder.edit = !editFounder.edit 
     }
+    function resetEdit(){
+        for(let i = 0 ; i < tasks.value.length ;i++){
+            tasks.value[i].edit = false
+        }
+    }
     function checkTask(id){
         const indexFounder = tasks.value.findIndex(task => task.id === id)
         const checkFounder = tasks.value[indexFounder]
@@ -96,6 +91,6 @@ export const todos = defineStore('arrayOnLoaded', () => {
 )
     return {
         filterBar, activeLog,
-        tasks,filtered,addTask,ommitTask,editTask,checkTask
+        tasks,filtered,addTask,ommitTask,editTask,checkTask,resetEdit
     }
 })

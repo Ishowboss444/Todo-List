@@ -11,8 +11,6 @@ document.documentElement.dataset.theme = store.theme
     <VSidebar/>
     <div
         class="main-section"
-        :id="!store.myTheme? 'dark' : 'light'"
-        @click="store.unWiden()"
     >
       <router-view></router-view>
     </div>
