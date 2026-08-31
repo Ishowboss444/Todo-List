@@ -19,6 +19,9 @@
   --second-text:rgb(91, 91, 91);
   --setting-card-shadow:0.3px 0.4px 4px rgb(152, 152, 152);
 
+  //------------ profile Setting
+  --setting-border: rgb(207, 207, 207);
+  --setting-box-shadow:0.3px 0.4px 2px rgb(203, 203, 203);
 }
 :root[data-theme="dark"]{
   --bg-color:#101828;
@@ -41,6 +44,9 @@
   --second-text:gray;
   --setting-card-shadow:0.3px 0.3px 4px rgb(17, 17, 17);
 
+  //------------ profile Setting
+  --setting-border: rgb(24, 24, 24);
+  --setting-box-shadow:0.3px 0.4px 2px rgba(137, 137, 137, 0.363);
 }
 #app {
   width: 100%;
@@ -523,10 +529,9 @@ h1{
       max-width: 80%;
       height: 40px;
       border-radius: 5px;
-      border: 1px solid rgb(89, 89, 89);
-      box-shadow: 0.3px 0.4px 2px rgb(203, 203, 203);
+      border: 1px solid --setting-border;
+      box-shadow:var(--setting-box-shadow);
       padding: 15px;
-      border: none;
       outline: none;
       font-size: 0.9rem;
       font-weight: 450;
@@ -534,9 +539,10 @@ h1{
   }
   .email-field{
     div{
+      background-color: var(--bg-color);
       max-width: 80%;
       border-radius: 5px;
-      box-shadow: 0.3px 0.4px 2px rgb(203, 203, 203);
+      box-shadow:var(--setting-box-shadow);
       overflow: hidden;
       border: none;
       position: relative;
@@ -614,7 +620,8 @@ h1{
       line-height: 40px;
     }
     button{
-      border: 1px solid rgb(76, 76, 76);
+      border: var(--setting-border);
+      box-shadow: var(--setting-box-shadow);
       position: relative;
       display: flex;
       overflow: hidden;
@@ -623,11 +630,11 @@ h1{
       justify-content: center;
       align-items: center;
       border-radius: 5px;
-      cursor: pointer;
       .file-reader-input{ 
         position: absolute;
         height: 100%;
-        visibility: hidden;
+        opacity: 0;
+        cursor: pointer;
         background-color: green;
       }
     }  
@@ -642,10 +649,18 @@ h1{
     button{
       background-color: var(--bg-add-button);
       border: 1px solid;
+      box-shadow: var(--setting-box-shadow);
       padding: 0.5rem 1.2rem;
       border-radius: 10px;
       color: white;
       font-weight: 400;
+      cursor: pointer;
+      transition: 0.1s ease-in;
+      &:hover{
+        transform: scale(1.01);
+        background-color: var(--bg-color);
+        color: var(--text);
+      }
     }
   }
 }

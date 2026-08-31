@@ -19,12 +19,12 @@
             <div class="profile">
               <div class="circle-profile">
                 <div class="radius">
-                  <img src="./files/cat.jpg" alt="cat">
+                  <img :src="settingStore.profile" alt="cat">
                 </div>
               </div>
               <div class="text-profile">
-                <h3>Mohammadi</h3>
-                <h5>abolboss1388@gmail.com</h5>
+                <h3>{{ settingStore.name }}</h3>
+                <h5>{{ settingStore.email }}</h5>
               </div>
             </div>
           </div>
@@ -61,7 +61,8 @@ import {Menu , SettingsIcon , ListTodo} from 'lucide-vue-next'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
-
+import { useSettingsStore } from '@/stores/settings';
+const settingStore = useSettingsStore()
 const route = useRoute()
 const router = useRouter()
 const store = useVariableStore();
