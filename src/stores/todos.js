@@ -6,7 +6,7 @@ import { walk } from "vue/compiler-sfc";
 import { toast } from "vue-sonner";
 
 
-export const todos = defineStore('arrayOnLoaded', () => {
+export const useTodoStore = defineStore('array', () => {
     const filterBar = ref([{
         title: 'All', status: true
     }, {

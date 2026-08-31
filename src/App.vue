@@ -1,8 +1,8 @@
 <script setup>
 import { Toaster } from 'vue-sonner';
 import VSidebar from './components/VSidebar.vue';
-import {useGlobalVariable} from '@/stores/varables.js';
-const store = useGlobalVariable();
+import {useVariableStore} from '@/stores/varables.js';
+const store = useVariableStore();
 document.documentElement.dataset.theme = store.theme 
 </script>
 

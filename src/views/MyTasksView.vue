@@ -44,16 +44,18 @@
   </div>
 </template>
 <script setup lang="js">
+//--------components
 import VCard from "@/components/todos/Card.vue";
 import VEmptyImg from "@/components/todos/Empty.vue";
-import { ref } from "vue";
-import { useGlobalVariable } from "@/stores/varables.js";
 import VFilterBar from "@/components/todos/Filterbar.vue";
-import { todos } from "@/stores/todos.js";
+//--------import
+import { ref } from "vue";
+import { useVariableStore } from "@/stores/varables.js";
+import { useTodoStore } from "@/stores/todos.js";
 import { Sun, Moon } from "lucide-vue-next";
-
-const store = useGlobalVariable();
-const tStore = todos();
+//---------------coding...
+const store = useVariableStore();
+const tStore = useTodoStore();
 const title = ref("");
 tStore.resetEdit()
 </script>

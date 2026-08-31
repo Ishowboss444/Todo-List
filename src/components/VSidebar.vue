@@ -56,7 +56,7 @@
   </aside>
 </template>
 <script setup>
-import {useGlobalVariable} from '@/stores/varables.js';
+import {useVariableStore} from '@/stores/varables.js';
 import {Menu , SettingsIcon , ListTodo} from 'lucide-vue-next'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -64,7 +64,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute()
 const router = useRouter()
-const store = useGlobalVariable();
+const store = useVariableStore();
 function pushRoute(Route){
   router.push({name: Route})
 }

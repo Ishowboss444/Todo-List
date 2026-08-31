@@ -2,7 +2,7 @@ import {defineStore} from 'pinia';
 import {ref} from 'vue';
 import {localGet, localSet ,initialize} from '@/utils/localStorage.js';
 
-export const useGlobalVariable = defineStore('globalVariables', () => {
+export const useVariableStore = defineStore('globalVariables', () => {
     const theme = ref(initialize('theme', 'dark'));
     const asideWide = ref(initialize("asideWide", false))
 

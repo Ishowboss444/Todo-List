@@ -1,9 +1,9 @@
 <script setup>
-import { todos } from '@/stores/todos';
+import { useTodoStore } from '@/stores/todos';
 const props = defineProps({
   todo:Object
 })
-const tStore = todos()
+const tStore = useTodoStore()
 </script>
 <template>
   <div class="cards">
