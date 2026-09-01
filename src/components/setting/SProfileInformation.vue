@@ -17,7 +17,7 @@
 </template>
 <script setup>
 import { ArrowLeft } from "lucide-vue-next";
-import { useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 function back() {

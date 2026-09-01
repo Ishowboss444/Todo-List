@@ -25,6 +25,15 @@
   //------------ profile Setting
   --setting-border: rgb(207, 207, 207);
   --setting-box-shadow: 0.3px 0.4px 2px rgb(203, 203, 203);
+  //-----------edit component
+  --edit-bg: #fff;
+  --edit-text: black;
+  --edit-accent: black;
+  --edit-accent: white;
+  --edit-border: rgb(207, 207, 207);
+  --edit-box-shadow: 0.3px 0.4px 2px rgb(108, 97, 97);
+  --edit-save-button: black;
+  --edit-invert-date-input: invert(0);
 }
 :root[data-theme="dark"] {
   --bg-color: #101828;
@@ -38,7 +47,6 @@
   --search-placeholder: white;
   --search-box-shadow: var(--search-box-shadow);
   --active: white;
-  --add-button: #1e2939;
 
   --profile-border: #9e9e9e;
   --profile-text: rgb(183, 179, 179);
@@ -53,6 +61,15 @@
   //------------ profile Setting
   --setting-border: rgb(24, 24, 24);
   --setting-box-shadow: 0.3px 0.4px 2px rgba(137, 137, 137, 0.363);
+  //-----------edit component
+  --edit-bg: #1e2939;
+  --edit-text: white;
+  --edit-accent: #1e2939;
+  --edit-accent: white;
+  --edit-border: rgb(72, 72, 72);
+  --edit-box-shadow: 0.3px 0.4px 2px rgb(49, 48, 48);
+  --edit-save-button: #1e2939;
+  --edit-invert-date-input: invert(1);
 }
 #app {
   width: 100%;
@@ -733,5 +750,153 @@ h1 {
 @media (max-width: 1380px) {
   .user-change-info-form {
     grid-template-columns: 1fr;
+  }
+}
+
+//-----------------edit component
+.edit-master {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-35%, -15%);
+  padding: 1.5rem;
+  background-color: var(--edit-bg);
+  border-radius: 15px;
+  z-index: 1000;
+  box-shadow: var(--card-shadow);
+  .edit-form {
+    width: 500px;
+    min-height: 50vh;
+    color: var(--text);
+    z-index: 1;
+    .edit-header {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        width: 40px;
+        height: 40px;
+        box-shadow: var(--edit-box-shadow);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--edit-border);
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.01);
+        }
+      }
+    }
+    .edit-second-header {
+      padding-bottom: 30px;
+      display: flex;
+      align-items: center;
+      h3 {
+        color: var(--second-text);
+      }
+    }
+    .edit-changes {
+      .edit-changes-title {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        input {
+          padding-left: 20px;
+          height: 40px;
+          border-radius: 10px;
+          border: 1px solid var(--edit-border);
+          outline: none;
+        }
+      }
+      .edit-changes-description,
+      .edit-changes-date {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        textarea {
+          font-size: 1.1rem;
+          font-weight: 400;
+          resize: none;
+          padding-top: 15px;
+          padding-left: 15px;
+          border-radius: 10px;
+          height: 70px;
+          outline: none;
+          border: 1px solid var(--edit-border);
+          width: 100%;
+        }
+      }
+      .edit-changes-state {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        div {
+          padding: 0 15px;
+          width: 100%;
+          border: 1px solid var(--edit-border);
+          border-radius: 10px;
+        }
+        select {
+          width: 100%;
+          height: 40px;
+          outline: none;
+          option {
+            outline: none;
+          }
+        }
+      }
+      .edit-changes-date {
+        div {
+          padding: 0 10px;
+          align-items: center;
+          border-radius: 10px;
+          border: 1px solid var(--edit-border);
+          input {
+            width: 100%;
+            height: 40px;
+          }
+          input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: var(
+              --edit-invert-date-input
+            ); 
+          }
+        }
+      }
+    }
+    .edit-save {
+      padding-top: 30px;
+      display: flex;
+      gap: 10px;
+      button {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid var(--edit-border);
+        p {
+          font-size: 1.1rem;
+        }
+      }
+      button:nth-child(1) {
+        padding: 13px;
+        flex: 1;
+      }
+      button:nth-child(2) {
+        padding: 13px;
+        flex: 2;
+        gap: 10px;
+        border: 1px solid var(--edit-border);
+        background-color: var(--edit-save-button);
+        color: white;
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
   }
 }

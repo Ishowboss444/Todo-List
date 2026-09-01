@@ -65,7 +65,7 @@
 <script setup lang="js">
 //--------components
 import VCard from "@/components/todos/Card.vue";
-import VEmptyImg from "@/components/todos/Empty.vue";
+import VEmptyImg from "@/components/todos/EmptyTodo.vue";
 import VFilterBar from "@/components/todos/Filterbar.vue";
 //--------import
 import { ref } from "vue";

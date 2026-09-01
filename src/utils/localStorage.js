@@ -13,9 +13,6 @@ export function initialize(key, atFirst) {
   let init = localStorage.getItem(key);
   if (init === null) {
     localStorage.setItem(key, JSON.stringify(atFirst));
-    console.log(
-      `this is the initialization of this ${key} key and first value is ${atFirst}`,
-    );
     return atFirst;
   }
   return JSON.parse(init);

@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref, watch } from "vue";
 import { initialize, localSet } from "@/utils/localStorage.js";
-import { Edit } from "lucide-vue-next";
-import { walk } from "vue/compiler-sfc";
 import { toast } from "vue-sonner";
 
 export const useTodoStore = defineStore("array", () => {
@@ -50,8 +48,15 @@ export const useTodoStore = defineStore("array", () => {
       return tasks.value.filter((item) => item.completed);
     }
   });
-
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
   function addTask(title) {
+    const rawDate = new Date();
+    const date = formatDate(rawDate);
     if (!title.trim()) {
       toast.error("Make sure ,You have filled out Precisely");
       return;
@@ -59,7 +64,10 @@ export const useTodoStore = defineStore("array", () => {
     tasks.value.unshift({
       title: title,
       edit: false,
+      state: "On progress",
+      description: "no description",
       completed: false,
+      date: date,
       id: tasks.value.length,
     });
   }
@@ -67,17 +75,17 @@ export const useTodoStore = defineStore("array", () => {
     const indexFounder = tasks.value.findIndex((task) => task.id === id);
     tasks.value.splice(indexFounder, 1);
   }
-  function editTask(id) {
-    const indexFounder = tasks.value.findIndex((task) => task.id === id);
-    if (!tasks.value[indexFounder].title.trim()) {
-      toast.warning(
-        'Make sure you fill out then save it ,unless it would save as "No filled"',
-      );
-      tasks.value[indexFounder].title = "No filled";
+  function editTask(newVal = false) {
+    if (!newVal) {
+      alert("wrong input for edit");
+      return;
     }
-
-    const editFounder = tasks.value[indexFounder];
-    editFounder.edit = !editFounder.edit;
+    const indexFounder = tasks.value.findIndex((task) => task.id === newVal.id);
+    tasks.value[indexFounder].description = newVal.description;
+    tasks.value[indexFounder].title = newVal.title;
+    tasks.value[indexFounder].date = newVal.date;
+    tasks.value[indexFounder].state = newVal.state;
+    toast.success("successfully changed");
   }
   function resetEdit() {
     for (let i = 0; i < tasks.value.length; i++) {
@@ -88,6 +96,9 @@ export const useTodoStore = defineStore("array", () => {
     const indexFounder = tasks.value.findIndex((task) => task.id === id);
     const checkFounder = tasks.value[indexFounder];
     checkFounder.completed = !checkFounder.completed;
+  }
+  function indexFinder(id) {
+    return tasks.value.findIndex((task) => task.id === id);
   }
   watch(
     tasks,
@@ -106,5 +117,6 @@ export const useTodoStore = defineStore("array", () => {
     editTask,
     checkTask,
     resetEdit,
+    indexFinder,
   };
 });

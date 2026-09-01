@@ -1,9 +1,20 @@
 <script setup>
 import { useTodoStore } from "@/stores/todos";
+import { useToggel } from "@/composable/toggle.js";
+import { useVariableStore } from "@/stores/varables.js";
+
+const store = useVariableStore();
+const tStore = useTodoStore();
 const props = defineProps({
   todo: Object,
 });
-const tStore = useTodoStore();
+
+function edit(id) {
+  const index = tStore.indexFinder(id);
+  store.editIdChange(index);
+  store.editToggel();
+  store.blurtoggel();
+}
 </script>
 <template>
   <div class="cards">
@@ -16,26 +27,16 @@ const tStore = useTodoStore();
     </div>
     <div class="order-of-cards">
       <h3
-        v-if="!todo.edit"
         :id="todo.completed ? 'completed' : ''"
         class="todo-title"
       >
         {{ todo.title }}
       </h3>
-
-      <input
-        v-else
-        v-model="todo.title"
-        class="editor-input"
-        type="text"
-        required
-        @keyup.enter="tStore.editTask(todo.id)"
-      >
     </div>
     <div class="icons order-of-cards">
       <i
         class="fa-regular fa-pen-to-square"
-        @click="tStore.editTask(todo.id)"
+        @click="edit(todo.id)"
       />
     </div>
     <div class="icons order-of-cards">
