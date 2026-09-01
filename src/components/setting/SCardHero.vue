@@ -1,7 +1,7 @@
 <template>
   <div class="card-hero">
     <div class="card-hero-icon">
-      <component :is="components[component]"></component>
+      <component :is="components[component]" />
     </div>
 
     <div class="card-hero-text">

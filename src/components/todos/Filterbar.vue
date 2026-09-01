@@ -3,8 +3,8 @@
     <ul>
       <li
         v-for="(item, index) in arrayStore.filterBar"
-        :key="item.title"
         :id="item.status ? 'active' : ''"
+        :key="item.title"
         @click="changeActiveClassBind(index)"
       >
         {{ item.title }}

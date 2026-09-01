@@ -9,7 +9,11 @@
         viewBox="0 0 666 500"
         fill="none"
       >
-        <rect width="666" height="500" fill="url(#pattern0_9_8)" />
+        <rect
+          width="666"
+          height="500"
+          fill="url(#pattern0_9_8)"
+        />
         <defs>
           <pattern
             id="pattern0_9_8"
@@ -35,7 +39,7 @@
     <div class="text-position">
       <h2 class="emptyText-darkMode">
         Empty as my motivation on <span>{{ days[currentDay] }}</span> 😅.
-        <br />
+        <br>
         Let's start adding stuff!
       </h2>
     </div>

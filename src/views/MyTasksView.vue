@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <span class="darkness" @click="store.themeChanger()">
+    <span
+      class="darkness"
+      @click="store.themeChanger()"
+    >
       <Sun v-if="store.theme === 'dark'" />
       <Moon v-else />
     </span>
@@ -12,11 +15,11 @@
     <form class="search-section">
       <div class="search">
         <input
+          v-model="title"
           type="text"
           class="search"
           placeholder="Type your task here..."
-          v-model="title"
-        />
+        >
         <input
           type="submit"
           value="+ Add"
@@ -25,18 +28,32 @@
             tStore.addTask(title);
             title = '';
           "
-        />
+        >
       </div>
-      <div v-if="tStore.filtered" class="filter-bar">
+      <div
+        v-if="tStore.filtered"
+        class="filter-bar"
+      >
         <VFilterBar />
       </div>
     </form>
-    <div v-if="!tStore.filtered" class="empty-card" id="special-width-empty">
+    <div
+      v-if="!tStore.filtered"
+      id="special-width-empty"
+      class="empty-card"
+    >
       <VEmptyImg />
     </div>
 
-    <div v-else class="card">
-      <div class="master-card" v-for="item in tStore.filtered" :key="item.id">
+    <div
+      v-else
+      class="card"
+    >
+      <div
+        v-for="item in tStore.filtered"
+        :key="item.id"
+        class="master-card"
+      >
         <VCard :todo="item" />
       </div>
     </div>

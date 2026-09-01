@@ -541,6 +541,8 @@ footer {
 h1 {
   font-size: 1.3rem;
 }
+
+//---------------setting
 .setting-card {
   color: var(--text);
   min-height: 10rem;
@@ -699,6 +701,35 @@ h1 {
     }
   }
 }
+.profile-setting-header {
+  background-color: transparent;
+  margin-top: 1.5rem;
+  .p-s-header-item-1 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .svg-span {
+      padding: 10px 10px 10px 0;
+    }
+    svg {
+      width: 25px;
+      height: 25px;
+      color: var(--text);
+    }
+  }
+  h1 {
+    color: var(--text);
+    font-size: 1.9rem;
+  }
+  p {
+    font-weight: 400;
+    font-size: 1rem;
+    font: 300;
+    line-height: 40px;
+    color: var(--second-text);
+  }
+}
+
 @media (max-width: 1380px) {
   .user-change-info-form {
     grid-template-columns: 1fr;

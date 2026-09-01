@@ -8,34 +8,41 @@ const tStore = useTodoStore();
 <template>
   <div class="cards">
     <div class="order-of-cards">
-      <input type="checkbox" class="checkbox" v-model="todo.completed" />
+      <input
+        v-model="todo.completed"
+        type="checkbox"
+        class="checkbox"
+      >
     </div>
     <div class="order-of-cards">
       <h3
-        class="todo-title"
         v-if="!todo.edit"
         :id="todo.completed ? 'completed' : ''"
+        class="todo-title"
       >
         {{ todo.title }}
       </h3>
 
       <input
         v-else
-        class="editor-input"
-        @keyup.enter="tStore.editTask(todo.id)"
-        type="text"
         v-model="todo.title"
+        class="editor-input"
+        type="text"
         required
+        @keyup.enter="tStore.editTask(todo.id)"
+      >
+    </div>
+    <div class="icons order-of-cards">
+      <i
+        class="fa-regular fa-pen-to-square"
+        @click="tStore.editTask(todo.id)"
       />
     </div>
     <div class="icons order-of-cards">
       <i
-        @click="tStore.editTask(todo.id)"
-        class="fa-regular fa-pen-to-square"
-      ></i>
-    </div>
-    <div class="icons order-of-cards">
-      <i @click="tStore.ommitTask(todo.id)" class="fa-regular fa-trash-can"></i>
+        class="fa-regular fa-trash-can"
+        @click="tStore.ommitTask(todo.id)"
+      />
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ document.documentElement.dataset.theme = store.theme;
   <div class="under-control">
     <VSidebar />
     <div class="main-section">
-      <router-view></router-view>
+      <router-view />
     </div>
   </div>
   <Toaster />

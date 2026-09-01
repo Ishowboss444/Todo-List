@@ -8,14 +8,26 @@
       <div class="padded-aside">
         <div class="card-close">
           <div class="transparent-bg">
-            <Menu v-if="!store.asideWide" @click.stop="store.widen()" />
-            <X v-else @click.stop="store.unWiden" />
+            <Menu
+              v-if="!store.asideWide"
+              @click.stop="store.widen()"
+            />
+            <X
+              v-else
+              @click.stop="store.unWiden"
+            />
           </div>
-          <div v-if="store.asideWide" class="profile-spot">
+          <div
+            v-if="store.asideWide"
+            class="profile-spot"
+          >
             <div class="profile">
               <div class="circle-profile">
                 <div class="radius">
-                  <img :src="settingStore.profile" alt="cat" />
+                  <img
+                    :src="settingStore.profile"
+                    alt="cat"
+                  >
                 </div>
               </div>
               <div class="text-profile">
@@ -34,7 +46,9 @@
           <div :class="listTodos.class">
             <ListTodo />
           </div>
-          <p v-if="store.asideWide">My Tasks</p>
+          <p v-if="store.asideWide">
+            My Tasks
+          </p>
         </div>
 
         <div
@@ -45,7 +59,9 @@
           <div :class="setting.class">
             <SettingsIcon />
           </div>
-          <p v-if="store.asideWide">Setting</p>
+          <p v-if="store.asideWide">
+            Setting
+          </p>
         </div>
       </div>
     </div>
