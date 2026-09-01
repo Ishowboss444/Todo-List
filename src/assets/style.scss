@@ -1,54 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-:root[data-theme="light"]{
-  --bg-color:#f3f4f6;
+:root[data-theme="light"] {
+  --bg-color: #f3f4f6;
 
-  --bg-aside:white;
+  --bg-aside: white;
 
-  --bg-card:white;
-  --bg-search:white;
-  --bg-add-button:black;
-  --search-placeholder:gray;
-  --search-box-shadow:.8px .8px 3px gray;
-  --active:black;
-  
-  --profile-border:black;
-  --profile-text:black;
+  --bg-card: white;
+  --bg-search: white;
+  --bg-add-button: black;
+  --search-placeholder: gray;
+  --search-box-shadow: 0.8px 0.8px 3px gray;
+  --active: black;
 
-  --text:black;
-  --second-text:rgb(91, 91, 91);
-  --setting-card-shadow:0.3px 0.4px 4px rgb(152, 152, 152);
+  --profile-border: black;
+  --profile-text: black;
+
+  --text: black;
+  --second-text: rgb(91, 91, 91);
+  --setting-card-shadow: 0.3px 0.4px 4px rgb(152, 152, 152);
   //--------------cards
   --card-shadow: 1px 1px 4px rgb(153, 153, 153);
+  //---------emptyman
+  --emptyman-text-color: #333333;
   //------------ profile Setting
   --setting-border: rgb(207, 207, 207);
-  --setting-box-shadow:0.3px 0.4px 2px rgb(203, 203, 203);
+  --setting-box-shadow: 0.3px 0.4px 2px rgb(203, 203, 203);
 }
-:root[data-theme="dark"]{
-  --bg-color:#101828;
+:root[data-theme="dark"] {
+  --bg-color: #101828;
 
-  --bg-aside:#1E2939;
+  --bg-aside: #1e2939;
 
-  --bg-card:#1E2939;
-  --bg-search:#1E2939;
-  --bg-add-button:#1E2939;
-  --text-search:white;
-  --search-placeholder:white;
-  --search-box-shadow:var(--search-box-shadow);
-  --active:white;
-  --add-button:#1E2939;
-  
-  --profile-border:#9e9e9e;
-  --profile-text:rgb(183, 179, 179);
+  --bg-card: #1e2939;
+  --bg-search: #1e2939;
+  --bg-add-button: #1e2939;
+  --text-search: white;
+  --search-placeholder: white;
+  --search-box-shadow: var(--search-box-shadow);
+  --active: white;
+  --add-button: #1e2939;
 
-  --text:white;
-  --second-text:gray;
-  --setting-card-shadow:0.3px 0.3px 4px rgb(17, 17, 17);
+  --profile-border: #9e9e9e;
+  --profile-text: rgb(183, 179, 179);
+
+  --text: white;
+  --second-text: gray;
+  --setting-card-shadow: 0.3px 0.3px 4px rgb(17, 17, 17);
   //--------------cards
   --card-shadow: 1px 1px 4px black;
+  //---------emptyman
+  --emptyman-text-color: white;
   //------------ profile Setting
   --setting-border: rgb(24, 24, 24);
-  --setting-box-shadow:0.3px 0.4px 2px rgba(137, 137, 137, 0.363);
+  --setting-box-shadow: 0.3px 0.4px 2px rgba(137, 137, 137, 0.363);
 }
 #app {
   width: 100%;
@@ -86,11 +90,11 @@ body {
   transition: 0.3s;
   background-color: var(--bg-aside);
 }
-.extend{
+.extend {
   width: 400px;
   // max-width: 400px;
 }
-.unextend{
+.unextend {
   width: 130px;
 }
 //-----------------logo and header
@@ -105,7 +109,8 @@ body {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      h1{
+      h1 {
+        font-size: 2rem;
         color: var(--text);
       }
     }
@@ -124,7 +129,7 @@ body {
     width: 50px;
     height: 50px;
     font-size: 50px;
-    svg{
+    svg {
       width: 100%;
       height: 100%;
       color: var(--text);
@@ -141,7 +146,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  .search{
+  .search {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -159,34 +164,34 @@ body {
     box-shadow: var(--search-box-shadow);
     background-color: var(--bg-search);
     color: var(--text);
-    &::placeholder{
+    &::placeholder {
       color: var(--search-placeholder);
     }
   }
 
   //------------fillterBar
-.filter-bar {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  justify-content : flex-start;
-  ul {
+  .filter-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     display: flex;
-    text-decoration: none;
-    list-style-type: none;
+    justify-content: flex-start;
+    ul {
+      display: flex;
+      text-decoration: none;
+      list-style-type: none;
 
-    li {
-      padding: 0 10px;
-      border-right: 1px solid;
-      color: gray;
-    }
+      li {
+        padding: 0 10px;
+        border-right: 1px solid;
+        color: gray;
+      }
 
-    li:last-child {
-      border: none;
+      li:last-child {
+        border: none;
+      }
     }
   }
-}
 
   .add-button {
     padding: 0;
@@ -202,7 +207,6 @@ body {
     box-shadow: 1px 1px 1px black;
   }
 }
-
 
 //-------------card Component
 .master-card {
@@ -280,7 +284,6 @@ body {
         padding-left: 10px;
         font-size: 20px;
         color: var(--text);
-
       }
 
       .editor-input {
@@ -294,7 +297,6 @@ body {
         border-bottom: 3px solid gray;
         padding: 10px;
         color: var(--text);
-
       }
 
       #disabled {
@@ -310,26 +312,28 @@ body {
 .emptyMan {
   width: 100%;
   display: flex;
-  position: relative;
-
+  justify-content: center;
   svg {
     width: 100%;
     height: 100%;
   }
 
   .text-position {
-    position: absolute;
-    bottom: 45%;
-    right: 15%;
+    width: 80%;
+    max-width: 50%;
     transition: 0.3s;
-
+    display: flex;
+    align-items: center;
+    position: relative;
     h2 {
+      left: -40%;
+      position: absolute;
+      font-size: 1.4rem;
       font-style: italic;
       font-weight: 400;
-      color: #333333;
+      color: var(--emptyman-text-color);
     }
   }
-
 }
 
 //---------------footer
@@ -345,11 +349,10 @@ footer {
 #completed {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
-  color: #6A7282;
+  color: #6a7282;
 }
 
 //-------------afterHover
-
 
 //--------------after hover in aside
 .padded-aside {
@@ -364,8 +367,8 @@ footer {
     gap: 20px;
     cursor: pointer;
     color: var(--text);
-    .transparent-bg{
-      svg{
+    .transparent-bg {
+      svg {
         width: 85%;
         height: 85%;
       }
@@ -379,7 +382,6 @@ footer {
       text-decoration: none;
       color: inherit;
     }
-
   }
 
   .card-close:first-child {
@@ -422,57 +424,56 @@ footer {
 
           h3 {
             line-height: 60px;
-            color:var(--profile-text) ;
+            color: var(--profile-text);
           }
 
           h5 {
             line-height: 0;
-            color:var(--profile-text) ;
+            color: var(--profile-text);
           }
         }
       }
     }
   }
-  .testActive{
+  .testActive {
     background-color: red;
   }
-  .activeNav{
-    background-color: #F3F4F6;
+  .activeNav {
+    background-color: #f3f4f6;
     color: black;
   }
 
   .background-of-todo-item {
-  width: 104px;
-  height: 58px;
-  // background-color: #F3F4F6;
-  border-radius: 10px;
+    width: 104px;
+    height: 58px;
+    // background-color: #F3F4F6;
+    border-radius: 10px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  svg {
-    width: 85%;
-    height: 85%;
-  }
-}
-
-.transparent-bg {
-  width: 104px;
-  height: 58px;
-  background-color: transparent;
-  border-radius: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    width: 85%;
-    height: 85%;
+    svg {
+      width: 85%;
+      height: 85%;
+    }
   }
 
-}
+  .transparent-bg {
+    width: 104px;
+    height: 58px;
+    background-color: transparent;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 85%;
+      height: 85%;
+    }
+  }
 
   #active-div {
     // background-color: #F3F4F6;
@@ -483,11 +484,7 @@ footer {
   }
 }
 
-
 @media (max-width: 1850px) {
-  .emptyText-darkMode {
-    display: none;
-  }
 }
 
 @media (max-width: 1400px) {
@@ -509,42 +506,42 @@ footer {
     width: 100vw;
     height: 100%;
   }
-  .search-section{
-    .search{
+  .search-section {
+    .search {
       gap: 10px;
     }
   }
   .central-holder {
     width: 100%;
   }
-  .master-card{
-    .cards{
-    grid-template-columns: 2fr 7fr 2fr 2fr;
+  .master-card {
+    .cards {
+      grid-template-columns: 2fr 7fr 2fr 2fr;
     }
-    .order-of-cards:nth-child(2){
-      width: 100% ;
+    .order-of-cards:nth-child(2) {
+      width: 100%;
       max-width: 200px;
     }
   }
 
   //--------asdie
-  .extend{
+  .extend {
     width: 300px;
     max-width: 300px;
   }
-  .unextend{
+  .unextend {
     width: 0px;
   }
 }
 
-//---------------------filter component 
-#active{
-  color:var(--active);
+//---------------------filter component
+#active {
+  color: var(--active);
 }
-h1{
+h1 {
   font-size: 1.3rem;
 }
-.setting-card{
+.setting-card {
   color: var(--text);
   min-height: 10rem;
   border-radius: 15px;
@@ -553,40 +550,39 @@ h1{
   grid-template-columns: 3fr 1fr;
   box-shadow: var(--setting-card-shadow);
   padding: 1.5rem;
-
 }
-.user-change-info-form{
+.user-change-info-form {
   padding: 2rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
-  .change-info-form-item{
+
+  .change-info-form-item {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 1rem 0;
-    input{
+    input {
       max-width: 80%;
       height: 40px;
       border-radius: 5px;
       border: 1px solid --setting-border;
-      box-shadow:var(--setting-box-shadow);
+      box-shadow: var(--setting-box-shadow);
       padding: 15px;
       outline: none;
       font-size: 0.9rem;
       font-weight: 450;
     }
   }
-  .email-field{
-    div{
+  .email-field {
+    div {
       background-color: var(--bg-color);
       max-width: 80%;
       border-radius: 5px;
-      box-shadow:var(--setting-box-shadow);
+      box-shadow: var(--setting-box-shadow);
       overflow: hidden;
       border: none;
       position: relative;
-      input{
+      input {
         all: unset;
         width: 100%;
         height: 40px;
@@ -595,7 +591,7 @@ h1{
         outline: none;
         color: gray;
       }
-      svg{
+      svg {
         width: 20px;
         height: 20px;
         position: absolute;
@@ -607,12 +603,11 @@ h1{
       }
     }
   }
-  
 }
-.card-hero{
+.card-hero {
   display: flex;
   gap: 20px;
-  .card-hero-icon{
+  .card-hero-icon {
     height: 60px;
     width: 60px;
     display: flex;
@@ -620,38 +615,38 @@ h1{
     align-items: center;
     border-radius: 50%;
     background-color: var(--bg-color);
-    svg{
+    svg {
       color: var(--text);
     }
   }
-  .card-hero-text{
-    h2{
+  .card-hero-text {
+    h2 {
       font-size: 1.3rem;
       color: var(--text);
     }
-    p{
+    p {
       font-size: 1rem;
       font-weight: 500;
       color: var(--second-text);
     }
   }
 }
-.profile-information-right-div{
-  .profile-information-photo{
+.profile-information-right-div {
+  .profile-information-photo {
     height: 50%;
     max-height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    img{
+    img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
     }
   }
-  .profile-information-file-reader{
+  .profile-information-file-reader {
     height: 30%;
-    p{
+    p {
       width: 100%;
       font-size: 0.8rem;
       color: var(--second-text);
@@ -659,7 +654,7 @@ h1{
       text-align: center;
       line-height: 40px;
     }
-    button{
+    button {
       border: var(--setting-border);
       box-shadow: var(--setting-box-shadow);
       position: relative;
@@ -670,23 +665,23 @@ h1{
       justify-content: center;
       align-items: center;
       border-radius: 5px;
-      .file-reader-input{ 
+      .file-reader-input {
         position: absolute;
         height: 100%;
         opacity: 0;
         cursor: pointer;
         background-color: green;
       }
-    }  
+    }
   }
 
-  .profile-information-save{
+  .profile-information-save {
     height: 20%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
 
-    button{
+    button {
       background-color: var(--bg-add-button);
       border: 1px solid;
       box-shadow: var(--setting-box-shadow);
@@ -696,7 +691,7 @@ h1{
       font-weight: 400;
       cursor: pointer;
       transition: 0.1s ease-in;
-      &:hover{
+      &:hover {
         transform: scale(1.01);
         background-color: var(--bg-color);
         color: var(--text);
@@ -704,8 +699,8 @@ h1{
     }
   }
 }
-@media (max-width:1380px){
-  .user-change-info-form{
+@media (max-width: 1380px) {
+  .user-change-info-form {
     grid-template-columns: 1fr;
   }
 }

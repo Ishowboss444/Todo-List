@@ -1,10 +1,11 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item,index) in arrayStore.filterBar"
-          :key="item.title"
-          :id="item.status? 'active' : '' "
-          @click="changeActiveClassBind(index)"
+      <li
+        v-for="(item, index) in arrayStore.filterBar"
+        :key="item.title"
+        :id="item.status ? 'active' : ''"
+        @click="changeActiveClassBind(index)"
       >
         {{ item.title }}
       </li>
@@ -13,15 +14,14 @@
 </template>
 <script setup lang="js">
 //----------import
-import {useTodoStore} from "@/stores/todos.js";
+import { useTodoStore } from "@/stores/todos.js";
 import { initialize, localSet } from "@/utils/localStorage";
 //--------coding...
-const arrayStore = useTodoStore()
-const filterIndex = initialize('filterIndex' , 0)
-arrayStore.activeLog(filterIndex)
+const arrayStore = useTodoStore();
+const filterIndex = initialize("filterIndex", 0);
+arrayStore.activeLog(filterIndex);
 function changeActiveClassBind(index) {
-  arrayStore.activeLog(index)
-  localSet('filterIndex' , index)
+  arrayStore.activeLog(index);
+  localSet("filterIndex", index);
 }
-
 </script>

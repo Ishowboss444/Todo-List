@@ -59,5 +59,5 @@ import { Sun, Moon } from "lucide-vue-next";
 const store = useVariableStore();
 const tStore = useTodoStore();
 const title = ref("");
-tStore.resetEdit()
+tStore.resetEdit();
 </script>

@@ -1,26 +1,21 @@
 <template>
   <aside
-      class="aside"
-      :class="store.asideWide ? 'extend' : 'unextend'"
-      @click.stop="store.widen()"
+    class="aside"
+    :class="store.asideWide ? 'extend' : 'unextend'"
+    @click.stop="store.widen()"
   >
-    <div
-        class="HoverControler"
-    >
-      <div
-          class="padded-aside"
-
-      >
-        <div class="card-close" >
+    <div class="HoverControler">
+      <div class="padded-aside">
+        <div class="card-close">
           <div class="transparent-bg">
-            <Menu v-if="!store.asideWide" @click.stop="store.widen()"/>
-            <X v-else @click.stop="store.unWiden"/>
+            <Menu v-if="!store.asideWide" @click.stop="store.widen()" />
+            <X v-else @click.stop="store.unWiden" />
           </div>
           <div v-if="store.asideWide" class="profile-spot">
             <div class="profile">
               <div class="circle-profile">
                 <div class="radius">
-                  <img :src="settingStore.profile" alt="cat">
+                  <img :src="settingStore.profile" alt="cat" />
                 </div>
               </div>
               <div class="text-profile">
@@ -31,57 +26,56 @@
           </div>
         </div>
 
-        <div 
-          class="card-close" 
-          :class="{'activeNav': active('MyTasksView')}" 
+        <div
+          class="card-close"
+          :class="{ activeNav: active('MyTasksView') }"
           @click="pushRoute('MyTasksView')"
-          >
-            <div :class="listTodos.class">
-              <ListTodo/>
-            </div>
-            <p v-if="store.asideWide">My Tasks</p>
+        >
+          <div :class="listTodos.class">
+            <ListTodo />
           </div>
+          <p v-if="store.asideWide">My Tasks</p>
+        </div>
 
-        <div 
-          class="card-close" 
-          :class="{'activeNav': active('SettingView')}" 
+        <div
+          class="card-close"
+          :class="{ activeNav: active('SettingView') }"
           @click="pushRoute('SettingView')"
         >
-            <div :class="setting.class">
-              <SettingsIcon/>
-            </div>
-            <p v-if="store.asideWide">Setting</p>
+          <div :class="setting.class">
+            <SettingsIcon />
           </div>
+          <p v-if="store.asideWide">Setting</p>
+        </div>
       </div>
     </div>
   </aside>
 </template>
 <script setup>
-import {useVariableStore} from '@/stores/varables.js';
-import {Menu , SettingsIcon , ListTodo, X} from 'lucide-vue-next'
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useRoute } from 'vue-router';
-import { useSettingsStore } from '@/stores/settings';
-const settingStore = useSettingsStore()
-const route = useRoute()
-const router = useRouter()
+import { useVariableStore } from "@/stores/varables.js";
+import { Menu, SettingsIcon, ListTodo, X } from "lucide-vue-next";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
+import { useSettingsStore } from "@/stores/settings";
+const settingStore = useSettingsStore();
+const route = useRoute();
+const router = useRouter();
 const store = useVariableStore();
-function pushRoute(Route){
-  router.push({name: Route})
+function pushRoute(Route) {
+  router.push({ name: Route });
 }
 const listTodos = ref({
-  class:'background-of-todo-item',
-  id:'active-div',
-  active:true,
-})
+  class: "background-of-todo-item",
+  id: "active-div",
+  active: true,
+});
 const setting = ref({
-  class:'transparent-bg',
-  id:'',
-  active:false,
-})
-function active(routeName){
-  return route.name === routeName
+  class: "transparent-bg",
+  id: "",
+  active: false,
+});
+function active(routeName) {
+  return route.name === routeName;
 }
-
 </script>
