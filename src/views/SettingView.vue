@@ -75,7 +75,7 @@ import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 
 const settingStore = useSettingsStore()
-const currentProfile = ref(localStorage.getItem('profile'))
+const currentProfile = ref(JSON.parse(localStorage.getItem('profile')))
 const newConfiguration = ref({
     fullName: settingStore.name,
     username :  settingStore.username,
@@ -98,7 +98,6 @@ function picLoc(event){
     }
     const reader = new FileReader()
     reader.onload = (e)=>{
-        console.log(e.target.result);
         currentProfile.value = e.target.result
     }
     reader.readAsDataURL(file)

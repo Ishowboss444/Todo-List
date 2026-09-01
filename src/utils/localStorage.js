@@ -1,29 +1,29 @@
-export function localSet(name , param){
-    const value = JSON.stringify(param)
-    if(typeof param === String){
-        localStorage.setItem(name ,param)
-        console.log('stored');  
+export function localSet(name , arg){
+    if(typeof name === 'string'){
+        localStorage.setItem(name ,JSON.stringify(arg))
+        return
+    }else{
+        localStorage.setItem(name , JSON.stringify(arg))
+        alert(`your storage with name ${name} is going wrong `)
     }
-    localStorage.setItem(name , param)
 }
+
 export function localGet(key){
-    return JSON.parse(localStorage.getItem(key))
-}
-export function initialize(item , atFirst){
-    const init = JSON.parse(localStorage.getItem(item))
-    if(init === null){
-        localStorage.setItem(item , JSON.stringify(atFirst))
-        return atFirst
+    if(typeof key === 'string'){
+        let output = localStorage.getItem(key)
+        output = output.split('').join('')
     }else{
-        return init
+        return JSON.parse(localStorage.getItem(key))
     }
 }
-export function stringInit(item , atFirst){
-    const init = localStorage.getItem(item)
+export function initialize(key , atFirst){
+    let init = localStorage.getItem(key)
     if(init === null){
-        localStorage.setItem(item , atFirst)
+        localStorage.setItem(key ,JSON.stringify(atFirst))
+        console.log(`this is the initialization of this ${key} key and first value is ${atFirst}`);
         return atFirst
-    }else{
-        return init
     }
+    return JSON.parse(init)
+    console.log(`${key} is the key of this storage and value is ${atFirst}`);
+    
 }

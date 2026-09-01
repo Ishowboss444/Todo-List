@@ -68,7 +68,6 @@ export const useTodoStore = defineStore('array', () => {
             toast.warning('Make sure you fill out then save it ,unless it would save as "No filled"')
             tasks.value[indexFounder].title = 'No filled'
         }
-        console.log(tasks.value[indexFounder].title);
         
         const editFounder = tasks.value[indexFounder]
         editFounder.edit = !editFounder.edit 
@@ -85,7 +84,6 @@ export const useTodoStore = defineStore('array', () => {
     }
     watch(tasks, (newVal)=>{
         localSet('tasks' , newVal)
-        console.log(newVal);  
     },
     {deep:true}
 )

@@ -1,13 +1,13 @@
-import { stringInit, localSet } from "@/utils/localStorage";
+import { initialize, localSet } from "@/utils/localStorage";
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 export const useSettingsStore = defineStore('settings' , () => {
-    const username = ref(stringInit('username' , 'user1'))
+    const username = ref(initialize('username' , 'user1'))
     const email = ref("example@gmail.com")
     const password = ref(false)
-    const name = ref(stringInit('name' , 'Unknown'))
-    const bio = ref(stringInit('bio' , 'No bio'))
-    const profile = ref(stringInit('profile' , 'https://avatars.githubusercontent.com/u/284268356?v=4'))
+    const name = ref(initialize('name' , 'Unknown'))
+    const bio = ref(initialize('bio' , 'No bio'))
+    const profile = ref(initialize('profile' , 'https://avatars.githubusercontent.com/u/284268356?v=4'))
     function newUser(userArg , emailArg , newPassword){
         username.value = userArg
         email.value = emailArg
