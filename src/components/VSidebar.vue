@@ -1,7 +1,7 @@
 <template>
   <aside
       class="aside"
-      :style="{width: store.asideWide ? '400px' : '130px'}"
+      :class="store.asideWide ? 'extend' : 'unextend'"
       @click.stop="store.widen()"
   >
     <div
@@ -13,7 +13,8 @@
       >
         <div class="card-close" >
           <div class="transparent-bg">
-            <Menu @click.stop="store.unWiden()"/>
+            <Menu v-if="!store.asideWide" @click.stop="store.widen()"/>
+            <X v-else @click.stop="store.unWiden"/>
           </div>
           <div v-if="store.asideWide" class="profile-spot">
             <div class="profile">
@@ -57,7 +58,7 @@
 </template>
 <script setup>
 import {useVariableStore} from '@/stores/varables.js';
-import {Menu , SettingsIcon , ListTodo} from 'lucide-vue-next'
+import {Menu , SettingsIcon , ListTodo, X} from 'lucide-vue-next'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';

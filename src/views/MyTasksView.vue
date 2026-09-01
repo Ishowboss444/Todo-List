@@ -10,25 +10,27 @@
       <h1>My Tasks</h1>
     </div>
     <form class="search-section">
-      <input
-        type="text"
-        class="search"
-        placeholder="Type your task here..."
-        v-model="title"
-      />
-      <input
-        type="submit"
-        value="+ Add"
-        class="add-button"
-        @click.prevent="
-          tStore.addTask(title);
-          title = '';
-        "
-      />
+      <div class="search">
+        <input
+          type="text"
+          class="search"
+          placeholder="Type your task here..."
+          v-model="title"
+        />
+        <input
+          type="submit"
+          value="+ Add"
+          class="add-button"
+          @click.prevent="
+            tStore.addTask(title);
+            title = '';
+          "
+        />
+      </div>
+      <div v-if="tStore.filtered" class="filter-bar">
+        <VFilterBar />
+      </div>
     </form>
-    <div v-if="tStore.filtered" class="filter-bar">
-      <VFilterBar />
-    </div>
     <div v-if="!tStore.filtered" class="empty-card" id="special-width-empty">
       <VEmptyImg />
     </div>
