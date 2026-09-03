@@ -91,7 +91,7 @@ function submit() {
         </div>
       </div>
       <div class="edit-save">
-        <button
+        <button type="button"
           @click="
             store.editToggel();
             store.blurtoggel();
