@@ -1,9 +1,8 @@
 <template>
   <div class="test">
     <SProfileInformation />
-    <SSettingProfile/>
-    <SThemeAppearance/>
-
+    <SSettingProfile />
+    <SThemeAppearance />
   </div>
 </template>
 <script setup lang="js">

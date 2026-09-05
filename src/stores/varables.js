@@ -4,10 +4,17 @@ import { localGet, localSet, initialize } from "@/utils/localStorage.js";
 
 export const useVariableStore = defineStore("globalVariables", () => {
   const theme = ref(initialize("theme", "dark"));
+  const accent = ref(initialize("accent", "primary"));
   const asideWide = ref(initialize("asideWide", false));
   const focusBlur = ref(false);
   const editId = ref(0);
   const edit = ref(false);
+
+  function accentToggel(accentColor) {
+    accent.value = accentColor;
+    document.documentElement.dataset.accent = accentColor;
+    localSet("accent", accent.value);
+  }
   function themeChanger() {
     if (theme.value === "dark") {
       document.documentElement.dataset.theme = "light";
@@ -43,6 +50,8 @@ export const useVariableStore = defineStore("globalVariables", () => {
     edit.value = !edit.value;
   }
   return {
+    accent,
+    accentToggel,
     theme,
     themeChanger,
     asideWide,

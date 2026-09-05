@@ -1,77 +1,77 @@
 <template>
-    <div class="setting-card">
-      <div>
-        <SCardHero
-          :component="'User'"
-          :first-text="'Profile Information'"
-          :second-text="'Update your personal information.'"
-        />
-        <div class="user-change-info-form">
-          <div class="change-info-form-item">
-            <lable>Full name</lable>
-            <input
-              v-model="newConfiguration.fullName"
-              type="text"
-            >
-          </div>
-
-          <div class="change-info-form-item email-field">
-            <lable>Email Adress</lable>
-            <div>
-              <input
-                type="email"
-                :value="settingStore.email"
-                readonly
-              >
-              <Lock />
-            </div>
-          </div>
-
-          <div class="change-info-form-item">
-            <lable>Username</lable>
-            <input
-              v-model="newConfiguration.username"
-              type="text"
-            >
-          </div>
-
-          <div class="change-info-form-item">
-            <lable>Bio (optional)</lable>
-            <input
-              v-model="newConfiguration.bio"
-              type="text"
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="profile-information-right-div">
-        <div class="profile-information-photo">
-          <img
-            :src="currentProfile"
-            alt="yes"
+  <div class="setting-card">
+    <div>
+      <SCardHero
+        :component="'User'"
+        :first-text="'Profile Information'"
+        :second-text="'Update your personal information.'"
+      />
+      <div class="user-change-info-form">
+        <div class="change-info-form-item">
+          <lable>Full name</lable>
+          <input
+            v-model="newConfiguration.fullName"
+            type="text"
           >
         </div>
-        <div class="profile-information-file-reader">
-          <button>
-            <Upload />
-            Change Photo
+
+        <div class="change-info-form-item email-field">
+          <lable>Email Adress</lable>
+          <div>
             <input
-              ref="pathPic"
-              class="file-reader-input"
-              type="file"
-              @change="picLoc"
+              type="email"
+              :value="settingStore.email"
+              readonly
             >
-          </button>
-          <p>JPG,PNG or GIF,Max size 2MB</p>
+            <Lock />
+          </div>
         </div>
-        <div class="profile-information-save">
-          <button @click="save">
-            Save Changes
-          </button>
+
+        <div class="change-info-form-item">
+          <lable>Username</lable>
+          <input
+            v-model="newConfiguration.username"
+            type="text"
+          >
+        </div>
+
+        <div class="change-info-form-item">
+          <lable>Bio (optional)</lable>
+          <input
+            v-model="newConfiguration.bio"
+            type="text"
+          >
         </div>
       </div>
     </div>
+
+    <div class="profile-information-right-div">
+      <div class="profile-information-photo">
+        <img
+          :src="currentProfile"
+          alt="yes"
+        >
+      </div>
+      <div class="profile-information-file-reader">
+        <button>
+          <Upload />
+          Change Photo
+          <input
+            ref="pathPic"
+            class="file-reader-input"
+            type="file"
+            @change="picLoc"
+          >
+        </button>
+        <p>JPG,PNG or GIF,Max size 2MB</p>
+      </div>
+      <div class="profile-information-save">
+        <button @click="save">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 <script setup lang="js">
 import { useSettingsStore } from "@/stores/settings";

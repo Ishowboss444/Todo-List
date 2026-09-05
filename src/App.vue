@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="js">
 import { Toaster } from "vue-sonner";
 import VSidebar from "./components/VSidebar.vue";
 import Edit from "./components/Edit.vue";
@@ -9,6 +9,7 @@ const store = useVariableStore();
 const todo = useTodoStore();
 
 document.documentElement.dataset.theme = store.theme;
+document.documentElement.dataset.accent = store.accent;
 </script>
 
 <template>

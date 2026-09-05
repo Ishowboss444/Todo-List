@@ -1,6 +1,5 @@
 <script setup>
 import { useTodoStore } from "@/stores/todos";
-import { useToggel } from "@/composable/toggle.js";
 import { useVariableStore } from "@/stores/varables.js";
 
 const store = useVariableStore();
