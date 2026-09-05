@@ -19,6 +19,7 @@
           type="text"
           class="search"
           placeholder="Type your task here..."
+          required
         >
         <input
           type="submit"

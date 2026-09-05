@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root[data-theme="light"] {
-  --bg-color: #f3f4f6;
+  //-----------accent
+  --accent:black;
 
+  //----------bg-colors
+  --bg-color: #f3f4f6;
   --bg-aside: white;
 
   --bg-card: white;
@@ -34,8 +37,13 @@
   --edit-box-shadow: 0.3px 0.4px 2px rgb(108, 97, 97);
   --edit-save-button: black;
   --edit-invert-date-input: invert(0);
+  
 }
 :root[data-theme="dark"] {
+  //-------------accent
+  --accent:#101828;
+
+  //-----bg colors
   --bg-color: #101828;
 
   --bg-aside: #1e2939;
@@ -718,6 +726,14 @@ h1 {
     }
   }
 }
+.svg-span {
+  padding: 10px 10px 10px 0;
+  svg {
+  width: 25px;
+  height: 25px;
+  color: var(--text);
+  }
+}
 .profile-setting-header {
   background-color: transparent;
   margin-top: 1.5rem;
@@ -725,14 +741,6 @@ h1 {
     display: flex;
     gap: 10px;
     align-items: center;
-    .svg-span {
-      padding: 10px 10px 10px 0;
-    }
-    svg {
-      width: 25px;
-      height: 25px;
-      color: var(--text);
-    }
   }
   h1 {
     color: var(--text);
